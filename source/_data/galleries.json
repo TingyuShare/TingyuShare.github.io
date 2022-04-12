@@ -1,0 +1,17 @@
+[{
+    "name": "BingView",
+    "cover": "https://source.unsplash.com/random/1920x1080",
+    "description": "君未看花时，花与君同寂；君来看花日，花色一时明。",
+    "photos": [
+      "https://source.unsplash.com/random/1920x1080",
+      "https://unsplash.it/1920/1080?random",
+      "https://picsum.photos/1920/1080",
+      "https://api.ixiaowai.cn/api/api.php",
+      "https://api.ixiaowai.cn/mcapi/mcapi.php",
+      "https://api.ixiaowai.cn/gqapi/gqapi.php",
+      "https://img.xjh.me/random_img.php?type=bg&ctype=nature&return=302",
+      "https://img.xjh.me/random_img.php?type=bg&ctype=nature&return=302&device=mobile",
+      "https://www.dmoe.cc/random.php",
+      "https://img.paulzzh.com/touhou/random"
+    ]
+  }]

@@ -6,6 +6,7 @@
 menu:
   home: / || 首页
   archives: /archives/ || 归档
+  galleries: /galleries || 相册
   tags: /tags/ || 标签
   categories: /categories/ || 分类
   about: /about/ || 关于
@@ -58,7 +59,7 @@ preview:
       light: /images/theme/welcome-image.jpg
       dark: /images/theme/welcome-image.jpg
     video:
-    api: # https://source.unsplash.com/random/1920x1080
+    api:  https://source.unsplash.com/random/1920x1080
     size: cover # css: background-size
     position: center # css: background-position
   motto:
@@ -80,8 +81,8 @@ copyright: <p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  
 
 # Social
 social:
-  qq: tencent://message/?Menu=yes&uin=645943871 || iconQQ || '#12B7F5'
-  wechat: javascript:; || iconwechat-fill || '#09BB07'
+  qq: http://wpa.qq.com/msgrd?v=3&uin=&site=qq&menu=yes || iconQQ || '#12B7F5'
+  wechat: weixin://dl/business/?t=3lfnmOoORsu || iconwechat-fill || '#09BB07'
   github: https://github.com/TingyuShare || icongithub-fill || '#9f7be1'
   email: mailto:ting_yumail@163.com || iconmail
 
@@ -122,7 +123,7 @@ excerpt:
 
 # Post Image
 post_image:
-  random: local # local galleries
+  random: galleries  # local galleries
   default: /images/theme/post-image.jpg
 
 # Page Size
@@ -167,10 +168,8 @@ carrier:
 # Galleries
 galleries:
   enable: true
-  title: 摄影
-  subtitle: Photography
-  type: waterfall # waterfall | grid
-  columns: 3
+  title: 相册
+  subtitle: Galleries
 
 
 # --------------------------------------------------
