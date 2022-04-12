@@ -25,6 +25,8 @@ jobs:
         run: npm install
       - name: Build
         run: npm run build
+      - name: theme-config
+        run: cp ./themes/_zhaoo_theme.yml ./themes/zhaoo/_config.yml
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
