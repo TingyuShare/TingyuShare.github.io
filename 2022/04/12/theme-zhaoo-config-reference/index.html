@@ -11,7 +11,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="google" content="notranslate" />
   
-  <meta name="description" content="时间有点晚了，先留个空。有时间把怎么设置ZHAOO这个...">
+  <meta name="description" content="Hexo 官网放出了 360 套左右的主题模板供大家选...">
   <meta name="author" content="Tingyu">
   <link rel="icon" href="/images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
   <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
@@ -194,20 +194,31 @@
       <div class="col-xl-6"><article class="article">
   <div class="wrap">
     <section class="head">
-  <img   class="lazyload" data-original="https://img.paulzzh.com/touhou/random" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <img   class="lazyload" data-original="https://api.ixiaowai.cn/gqapi/gqapi.php" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
   <div class="head-mask">
     <h1 class="head-title">ZHAOO 主题参考</h1>
     <div class="head-info">
       <span class="post-info-item"><i class="iconfont iconcalendar"></i>四月 12, 2022</span>
       
-      <span class="post-info-item"><i class="iconfont iconfont-size"></i>59</span>
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>1449</span>
     </div>
   </div>
 </section>
     <section class="main">
       <section class="content">
         
-        <p>时间有点晚了，先留个空。<br>有时间把怎么设置ZHAOO这个主题，参考用到的手册搬迁过来。嘿嘿。<br>当然会在醒目位置标记出处。</p>
+        <p>Hexo 官网放出了 360 套左右的主题模板供大家选择 <a target="_blank" rel="noopener" href="https://hexo.io/themes/%EF%BC%8C">https://hexo.io/themes/，</a> 一眼就看中了 zhaoo， 风格古朴有韵味。好了萝卜青菜各有所爱，选择一款你爱的主题开始旅程吧。 快速更新一下我对ZHAOO做了什么吧。</p>
+<h2 id="社交链接"><a href="#社交链接" class="headerlink" title="社交链接"></a>社交链接</h2><p>替换了原本自带的社交链接，并去掉了 instagram 的连接， 保留了qq 和 wechat 的内容，并提换了 qq 和 wechat 的连接。 目前测试可以调用起手机的wechat， 点击开启 QQ 似乎有些问题。 不过图片放在底部挺好看的，所以若有似无了。</p>
+<h2 id="打赏二维码"><a href="#打赏二维码" class="headerlink" title="打赏二维码"></a>打赏二维码</h2><p>这种必须替换成自己的吖，说不定有人看我码字辛苦，给点幸苦费呢。嘿嘿</p>
+<h2 id="欢迎图片"><a href="#欢迎图片" class="headerlink" title="欢迎图片"></a>欢迎图片</h2><p>欢迎图片开启了 动态图片 的功能，默认是被注释了的。 毕竟能动的还是动一动，主题配置文档里面, 推荐的动图地址非常引人关注。在此特意标注一下：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh">https://source.unsplash.com/random/1920x1080<br>https://api.vvhan.com/api/bing?<span class="hljs-built_in">type</span>=sj<br></code></pre></td></tr></table></figure>
+
+<h2 id="相册页面"><a href="#相册页面" class="headerlink" title="相册页面"></a>相册页面</h2><p>刚开始程序运行有点问题，没有定位好原作者提供的example, 所以就去掉了摄影(原作者取名) 的菜单项目。后来想着后期可能也会需要放放图片，再加上增加欢迎图片的时候的经历，突发奇想何不找点自动生成图片的资源，直接放到相册功能里面生成呢！！</p>
+<p>所以分享一下用到的资源。文字码的有点干，直接上链接</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs sh">https://source.unsplash.com/random/1920x1080<span class="hljs-string">&quot;,</span><br><span class="hljs-string">https://unsplash.it/1920/1080?random&quot;</span>,<br>https://picsum.photos/1920/1080<span class="hljs-string">&quot;,</span><br><span class="hljs-string">https://api.ixiaowai.cn/api/api.php&quot;</span>,<br>https://api.ixiaowai.cn/mcapi/mcapi.php<span class="hljs-string">&quot;,</span><br><span class="hljs-string">https://api.ixiaowai.cn/gqapi/gqapi.php&quot;</span>,<br>https://img.xjh.me/random_img.php?<span class="hljs-built_in">type</span>=<span class="hljs-built_in">bg</span>&amp;ctype=nature&amp;<span class="hljs-built_in">return</span>=302<span class="hljs-string">&quot;,</span><br><span class="hljs-string">https://img.xjh.me/random_img.php?type=bg&amp;ctype=nature&amp;return=302&amp;device=mobile&quot;</span>,<br>https://www.dmoe.cc/random.php<span class="hljs-string">&quot;,</span><br><span class="hljs-string">https://img.paulzzh.com/touhou/random&quot;</span><br></code></pre></td></tr></table></figure>
+<p>宝贵的资源总有来处，详情可参考 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/wbyixx/p/12165363.html%E3%80%82">https://www.cnblogs.com/wbyixx/p/12165363.html。</a> BTW, 感觉二次元的魔力在动图这一方面很强悍。PHP 不知道是不是最好的语言，但在随机图上还是大放异彩的。</p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>好了本来想再啰嗦啰嗦后，拉出一条官方主题配置文档的。想来还是低调，附上全篇最重要的配置参考吧：<a target="_blank" rel="noopener" href="https://www.izhaoo.com/2020/05/05/hexo-theme-zhaoo-doc/%E3%80%82">https://www.izhaoo.com/2020/05/05/hexo-theme-zhaoo-doc/。</a> </p>
+<h2 id="话外"><a href="#话外" class="headerlink" title="话外"></a>话外</h2><p>工作忙碌，计划有时间更新一下 favicon， 增加评论功能， 然后基本就不会在折腾主题的事情了。 有时间再温习一下 Markdown 的语法吧。</p>
 
       </section>
       <section class="extra">
@@ -250,7 +261,7 @@
           
   <aside class="toc-wrap">
     <h3 class="toc-title">文章目录：</h3>
-    
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BE%E4%BA%A4%E9%93%BE%E6%8E%A5"><span class="toc-text">社交链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%93%E8%B5%8F%E4%BA%8C%E7%BB%B4%E7%A0%81"><span class="toc-text">打赏二维码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AC%A2%E8%BF%8E%E5%9B%BE%E7%89%87"><span class="toc-text">欢迎图片</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%86%8C%E9%A1%B5%E9%9D%A2"><span class="toc-text">相册页面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96"><span class="toc-text">其他</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%9D%E5%A4%96"><span class="toc-text">话外</span></a></li></ol>
   </aside>
 
         
