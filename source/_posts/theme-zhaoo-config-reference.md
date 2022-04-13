@@ -1,6 +1,6 @@
 ---
 title: ZHAOO 主题参考
-date: 2022-04-12 23:49:19
+date: 2022-04-13 23:05:19
 tags: hexo
 ---
 Hexo 官网放出了 360 套左右的主题模板供大家选择 https://hexo.io/themes/， 一眼就看中了 zhaoo， 风格古朴有韵味。好了萝卜青菜各有所爱，选择一款你爱的主题开始旅程吧。 快速更新一下我对ZHAOO做了什么吧。
@@ -23,21 +23,21 @@ https://api.vvhan.com/api/bing?type=sj
 
 所以分享一下用到的资源。文字码的有点干，直接上链接
 ```sh
-https://source.unsplash.com/random/1920x1080",
-https://unsplash.it/1920/1080?random",
-https://picsum.photos/1920/1080",
-https://api.ixiaowai.cn/api/api.php",
-https://api.ixiaowai.cn/mcapi/mcapi.php",
-https://api.ixiaowai.cn/gqapi/gqapi.php",
-https://img.xjh.me/random_img.php?type=bg&ctype=nature&return=302",
-https://img.xjh.me/random_img.php?type=bg&ctype=nature&return=302&device=mobile",
-https://www.dmoe.cc/random.php",
-https://img.paulzzh.com/touhou/random"
+https://source.unsplash.com/random/1920x1080
+https://unsplash.it/1920/1080?random
+https://picsum.photos/1920/1080
+https://api.ixiaowai.cn/api/api.php
+https://api.ixiaowai.cn/mcapi/mcapi.php
+https://api.ixiaowai.cn/gqapi/gqapi.php
+https://img.xjh.me/random_img.php?type=bg&ctype=nature&return=302
+https://img.xjh.me/random_img.php?type=bg&ctype=nature&return=302&device=mobile
+https://www.dmoe.cc/random.php
+https://img.paulzzh.com/touhou/random
 ```
-宝贵的资源总有来处，详情可参考 https://www.cnblogs.com/wbyixx/p/12165363.html。 BTW, 感觉二次元的魔力在动图这一方面很强悍。PHP 不知道是不是最好的语言，但在随机图上还是大放异彩的。
+宝贵的资源总有来处，详情可参考 https://www.cnblogs.com/wbyixx/p/12165363.html ,BTW, 感觉二次元的魔力在动图这一方面很强悍。PHP 不知道是不是最好的语言，但在随机图上还是大放异彩的。
 
 ## 其他
-好了本来想再啰嗦啰嗦后，拉出一条官方主题配置文档的。想来还是低调，附上全篇最重要的配置参考吧：https://www.izhaoo.com/2020/05/05/hexo-theme-zhaoo-doc/。 
+好了本来想再啰嗦啰嗦后，拉出一条官方主题配置文档的。想来还是低调，附上全篇最重要的配置参考吧：https://www.izhaoo.com/2020/05/05/hexo-theme-zhaoo-doc 
 
 ## 话外
 工作忙碌，计划有时间更新一下 favicon， 增加评论功能， 然后基本就不会在折腾主题的事情了。 有时间再温习一下 Markdown 的语法吧。
