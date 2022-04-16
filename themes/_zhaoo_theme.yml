@@ -30,11 +30,11 @@ color:
 
 # Favicon
 favicon:
-  small: /images/icons/favicon-16x16.png
-  medium: /images/icons/favicon-32x32.png
-  apple_touch_icon: /images/icons/apple-touch-icon.png
-  safari_pinned_tab: /images/icons/stun-logo.svg
-  msapplication: /images/icons/favicon-144x144.png
+  small: /images/icon/favicon-16x16.png
+  medium: /images/icon/favicon-32x32.png
+  apple_touch_icon: /images/icon/apple-touch-icon.png
+  safari_pinned_tab: /images/icon/stun-logo.svg
+  msapplication: /images/icon/favicon-144x144.png
 
 # Font
 font:
@@ -81,7 +81,6 @@ copyright: <p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  
 
 # Social
 social:
-  qq: http://wpa.qq.com/msgrd?v=3&uin=&site=qq&menu=yes || iconQQ || '#12B7F5'
   wechat: weixin://dl/business/?t=3lfnmOoORsu || iconwechat-fill || '#09BB07'
   github: https://github.com/TingyuShare || icongithub-fill || '#9f7be1'
   email: mailto:ting_yumail@163.com || iconmail
@@ -177,17 +176,17 @@ galleries:
 # --------------------------------------------------
 
 comments:
-  enable: false
-  type: valine # gitalk | valine | changyan
+  enable: true
+  type: gitalk
   button: true
 
 # Gitalk
 gitalk:
-  owner:
-  repo:
-  admin:
-  clientID:
-  clientSecret:
+  owner: TingyuShare
+  repo: TingyuShare.github.io
+  admin: ting_yumail@163.com
+  clientID: 973bc4e2850cc97a9d80
+  clientSecret: 755d3c24e71c95e86139fb80780152958f6121e7
 
 # Valine
 valine:
