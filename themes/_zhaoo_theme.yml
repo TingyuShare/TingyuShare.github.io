@@ -96,7 +96,7 @@ fab:
 
 # Search
 search:
-  enable: enable
+  enable: false
 
 # QR Code
 qrcode:
