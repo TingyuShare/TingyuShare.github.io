@@ -6,12 +6,12 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>smartDNS 加速你的访问 - VISION</title>
+  <title>go 从一个循环开卷 - VISION</title>
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="google" content="notranslate" />
   <meta name="keywords" content="blog fun idea">
-  <meta name="description" content="SmartDNS 是一个运行在本地的 DNS 服务器，...">
+  <meta name="description" content="能用 python 就不用 go, 然而大千世界啥都得...">
   <meta name="author" content="Tingyu">
   <link rel="icon" href="/images/icon/favicon-16x16.png" type="image/png" sizes="16x16">
   <link rel="icon" href="/images/icon/favicon-32x32.png" type="image/png" sizes="32x32">
@@ -152,7 +152,7 @@
       
       
     </div>
-    <div class="center">smartDNS 加速你的访问</div>
+    <div class="center">go 从一个循环开卷</div>
     <div class="right">
       <i class="iconfont iconmenu j-navbar-menu"></i>
     </div>
@@ -194,24 +194,25 @@
       <div class="col-xl-6"><article class="article">
   <div class="wrap">
     <section class="head">
-  <img   class="lazyload" data-original="https://www.dmoe.cc/random.php" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <img   class="lazyload" data-original="https://api.ixiaowai.cn/mcapi/mcapi.php" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
   <div class="head-mask">
-    <h1 class="head-title">smartDNS 加速你的访问</h1>
+    <h1 class="head-title">go 从一个循环开卷</h1>
     <div class="head-info">
-      <span class="post-info-item"><i class="iconfont iconcalendar"></i>六月 14, 2022</span>
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>六月 15, 2022</span>
       
-      <span class="post-info-item"><i class="iconfont iconfont-size"></i>291</span>
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>716</span>
     </div>
   </div>
 </section>
     <section class="main">
       <section class="content">
         
-        <p>SmartDNS 是一个运行在本地的 DNS 服务器，它接受来自本地客户端的 DNS 查询请求，然后从多个上游 DNS 服务器获取 DNS 查询结果，并将访问速度最快的结果返回给客户端</p>
-<h2 id="SmartDNS-与-DNSmasq-的区别"><a href="#SmartDNS-与-DNSmasq-的区别" class="headerlink" title="SmartDNS 与 DNSmasq 的区别"></a>SmartDNS 与 DNSmasq 的区别</h2><p>SmartDNS 返回最快的解析结果<br>Dnsmasq 可用于智能加快 DNS的分析结果。DNSmasq 也可用于 DHCP </p>
-<h2 id="SmartDNS-的缺点"><a href="#SmartDNS-的缺点" class="headerlink" title="SmartDNS 的缺点"></a>SmartDNS 的缺点</h2><p>正常浏览访问上网没有问题， 如果使用域名解析 LB 只会返回一个结果，不会有树形搜索返回LB后面的多个IP地址</p>
-<h2 id="SmartDNS的使用"><a href="#SmartDNS的使用" class="headerlink" title="SmartDNS的使用"></a>SmartDNS的使用</h2><p><a target="_blank" rel="noopener" href="https://pymumu.github.io/smartdns/">smartdns 教程</a></p>
-<h2 id="DNSmasq-教程部分"><a href="#DNSmasq-教程部分" class="headerlink" title="DNSmasq 教程部分"></a>DNSmasq 教程部分</h2><p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1174717">DNSmasq 教程</a></p>
+        <p>能用 python 就不用 go, 然而大千世界啥都得懂点。所以先搞个循环卷一卷。</p>
+<h2 id="first-step-of-first-way"><a href="#first-step-of-first-way" class="headerlink" title="first step of first way"></a>first step of first way</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span><br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>	<span class="hljs-keyword">var</span> keepGoing = <span class="hljs-literal">true</span><br>	answer := <span class="hljs-string">&quot;&quot;</span><br>	<span class="hljs-keyword">for</span> keepGoing &#123;<br>		fmt.Println(<span class="hljs-string">&quot;你不quit我就卷: &quot;</span>)<br>		fmt.Scan(&amp;answer)<br>		<span class="hljs-keyword">if</span> answer == <span class="hljs-string">&quot;quit&quot;</span> &#123;<br>			keepGoing = <span class="hljs-literal">false</span><br>		&#125;<br>	&#125;<br>	fmt.Println(<span class="hljs-string">&quot;program exit&quot;</span>)<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="go-的三个循环层次"><a href="#go-的三个循环层次" class="headerlink" title="go 的三个循环层次"></a>go 的三个循环层次</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-comment">// 自然卷</span><br><span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++ &#123;<br>    <br>&#125; <br><span class="hljs-comment">// 卷不卷</span><br><span class="hljs-keyword">for</span> &lt;condition&gt; &#123;<br><br>&#125;<br><span class="hljs-comment">// 踏步卷 </span><br>kvs := <span class="hljs-keyword">map</span>[<span class="hljs-type">string</span>]<span class="hljs-type">string</span>&#123;<span class="hljs-string">&quot;a&quot;</span>: <span class="hljs-string">&quot;apple&quot;</span>, <span class="hljs-string">&quot;b&quot;</span>: <span class="hljs-string">&quot;banana&quot;</span>&#125;<br><span class="hljs-keyword">for</span> k, v := <span class="hljs-keyword">range</span> kvs &#123;<br>    fmt.Printf(<span class="hljs-string">&quot;%s -&gt; %s\n&quot;</span>, k, v)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="go-福利"><a href="#go-福利" class="headerlink" title="go 福利"></a>go 福利</h2><p><a target="_blank" rel="noopener" href="https://gobyexample.com/">go by example</a></p>
 
       </section>
       <section class="extra">
@@ -219,7 +220,7 @@
           <ul class="copyright">
   
     <li><strong>本文作者：</strong>Tingyu</li>
-    <li><strong>本文链接：</strong><a href="http://blog.opsting.xyz/2022/06/14/smartdns-usage/index.html" title="http:&#x2F;&#x2F;blog.opsting.xyz&#x2F;2022&#x2F;06&#x2F;14&#x2F;smartdns-usage&#x2F;index.html">http:&#x2F;&#x2F;blog.opsting.xyz&#x2F;2022&#x2F;06&#x2F;14&#x2F;smartdns-usage&#x2F;index.html</a></li>
+    <li><strong>本文链接：</strong><a href="http://blog.opsting.xyz/2022/06/15/go-foreach/index.html" title="http:&#x2F;&#x2F;blog.opsting.xyz&#x2F;2022&#x2F;06&#x2F;15&#x2F;go-foreach&#x2F;index.html">http:&#x2F;&#x2F;blog.opsting.xyz&#x2F;2022&#x2F;06&#x2F;15&#x2F;go-foreach&#x2F;index.html</a></li>
     <li><strong>版权声明：</strong>本博客所有文章均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" title="BY-NC-SA" target="_blank" rel="noopener">BY-NC-SA</a> 许可协议，转载请注明出处！</li>
   
 </ul>
@@ -236,12 +237,12 @@
 </section>
         
         
-  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/dns/" rel="tag">dns</a></li></ul> 
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/language/" rel="tag">language</a></li></ul> 
 
         
   <nav class="nav">
-    <a href="/2022/06/15/go-foreach/"><i class="iconfont iconleft"></i>go 从一个循环开卷</a>
-    <a href="/2022/06/13/frp-expose-lan/">frp 暴露你的本地服务<i class="iconfont iconright"></i></a>
+    <a href="/2022/06/15/besttrace/"><i class="iconfont iconleft"></i>besttrace 追踪路由点详情</a>
+    <a href="/2022/06/14/smartdns-usage/">smartDNS 加速你的访问<i class="iconfont iconright"></i></a>
   </nav>
 
       </section>
@@ -285,7 +286,7 @@
           
   <aside class="toc-wrap">
     <h3 class="toc-title">文章目录：</h3>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#SmartDNS-%E4%B8%8E-DNSmasq-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">SmartDNS 与 DNSmasq 的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SmartDNS-%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="toc-text">SmartDNS 的缺点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SmartDNS%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-text">SmartDNS的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DNSmasq-%E6%95%99%E7%A8%8B%E9%83%A8%E5%88%86"><span class="toc-text">DNSmasq 教程部分</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#first-step-of-first-way"><span class="toc-text">first step of first way</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#go-%E7%9A%84%E4%B8%89%E4%B8%AA%E5%BE%AA%E7%8E%AF%E5%B1%82%E6%AC%A1"><span class="toc-text">go 的三个循环层次</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#go-%E7%A6%8F%E5%88%A9"><span class="toc-text">go 福利</span></a></li></ol>
   </aside>
 
         
