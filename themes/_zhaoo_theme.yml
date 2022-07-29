@@ -177,7 +177,7 @@ galleries:
 
 comments:
   enable: true
-  type: gitalk
+  type: changyan
   button: true
 
 # Gitalk
@@ -199,8 +199,8 @@ valine:
 
 # ChangYan
 changyan:
-  appId:
-  conf:
+  appId: cywclrjGA
+  conf: 384bbffa8b7a0ee1a75c3b1583ebf924
 
 # --------------------------------------------------
 # Plugin settings
