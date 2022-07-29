@@ -194,7 +194,7 @@
       <div class="col-xl-6"><article class="article">
   <div class="wrap">
     <section class="head">
-  <img   class="lazyload" data-original="https://api.yimian.xyz/img?type=wallpaper" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <img   class="lazyload" data-original="https://api.ixiaowai.cn/api/api.php" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
   <div class="head-mask">
     <h1 class="head-title">MarkDown 博客小试</h1>
     <div class="head-info">
@@ -277,26 +277,59 @@
     <div class="btn" id="comments-btn">查看评论</div>
   
   
-<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-<div id="gitalk" class="gitalk"></div>
-<script defer src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-<script>
+<div id="SOHUCS"></div>
+<script type="text/javascript">
   window.onload = function () {
-    var gitalk = new Gitalk({
-      clientID: '973bc4e2850cc97a9d80',
-      clientSecret: '755d3c24e71c95e86139fb80780152958f6121e7',
-      id: window.location.pathname,
-      repo: 'TingyuShare.github.io',
-      owner: 'TingyuShare',
-      admin: 'ting_yumail@163.com'
-    });
+    var loadChangYan = function () {
+      var appid = 'cywclrjGA';
+      var conf = '384bbffa8b7a0ee1a75c3b1583ebf924';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+        var head = document.getElementsByTagName('head')[0] || document.head || document.documentElement;
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.charset = 'utf-8';
+        script.id = 'changyan_mobile_js';
+        script.src = 'https://cy-cdn.kuaizhan.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid +
+          '&conf=' + conf;
+        head.appendChild(script);
+      } else {
+        var loadJs = function (d, a) {
+          var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+          var b = document.createElement("script");
+          b.setAttribute("type", "text/javascript");
+          b.setAttribute("charset", "UTF-8");
+          b.setAttribute("src", d);
+          if (typeof a === "function") {
+            if (window.attachEvent) {
+              b.onreadystatechange = function () {
+                var e = b.readyState;
+                if (e === "loaded" || e === "complete") {
+                  b.onreadystatechange = null;
+                  a()
+                }
+              }
+            } else {
+              b.onload = a
+            }
+          }
+          c.appendChild(b)
+        };
+        loadJs("https://cy-cdn.kuaizhan.com/upload/changyan.js", function () {
+          window.changyan.api.config({
+            appid: appid,
+            conf: conf
+          })
+        });
+      }
+    }
     if ( true ) {
       $("#comments-btn").on("click", function () {
         $(this).hide();
-        gitalk.render('gitalk');
+        loadChangYan();
       });
     } else {
-      gitalk.render('gitalk');
+      loadChangYan();
     }
   }
 </script>
