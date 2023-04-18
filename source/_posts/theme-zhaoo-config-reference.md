@@ -14,7 +14,7 @@ Hexo 官网放出了 360 套左右的主题模板供大家选择 https://hexo.io
 ## 欢迎图片
 欢迎图片开启了 动态图片 的功能，默认是被注释了的。 毕竟能动的还是动一动，主题配置文档里面, 推荐的动图地址非常引人关注。在此特意标注一下：
 ```sh
-https://source.unsplash.com/random/1920x1080
+https://picsum.photos/1920/1080/?random
 https://api.vvhan.com/api/bing?type=sj
 ```
 
@@ -23,7 +23,7 @@ https://api.vvhan.com/api/bing?type=sj
 
 所以分享一下用到的资源。文字码的有点干，直接上链接
 ```sh
-https://source.unsplash.com/random/1920x1080
+https://picsum.photos/1920/1080/?random
 https://unsplash.it/1920/1080?random
 https://picsum.photos/1920/1080
 https://api.ixiaowai.cn/api/api.php
