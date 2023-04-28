@@ -27,7 +27,7 @@ https://picsum.photos/1920/1080/?random
 https://unsplash.it/1920/1080?random
 https://picsum.photos/1920/1080
 https://api.ixiaowai.cn/api/api.php
-https://api.ixiaowai.cn/mcapi/mcapi.php
+https://img.paulzzh.com/touhou/random
 https://api.ixiaowai.cn/gqapi/gqapi.php
 https://img.xjh.me/random_img.php?type=bg&ctype=nature&return=302
 https://img.xjh.me/random_img.php?type=bg&ctype=nature&return=302&device=mobile
