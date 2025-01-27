@@ -1,0 +1,580 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" color-mode=light>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>负载均衡器常用的算法机制 - VISION</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+  <meta name="keywords" content="blog fun idea">
+  <meta name="description" content="负载均衡器常用的算法机制负载均衡器是现代分布式系统中不...">
+  <meta name="author" content="Tingyu">
+  <link rel="icon" href="/images/icon/favicon-16x16.png" type="image/png" sizes="16x16">
+  <link rel="icon" href="/images/icon/favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/images/icon/apple-touch-icon.png" sizes="180x180">
+  <meta rel="mask-icon" href="/images/icon/stun-logo.svg" color="#333333">
+  
+    <meta rel="msapplication-TileImage" content="/images/icon/favicon-144x144.png">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+    
+<link rel="stylesheet" href="https://at.alicdn.com/t/font_1445822_p6ry5n7lrr.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+    
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css" name="highlight-style" mode="light">
+
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/solarized-dark.min.css" name="highlight-style" mode="dark">
+
+      
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      loading: {
+        gif: '/images/theme/loading.gif',
+        lottie: ''
+      },
+      lazyload: {
+        enable: true,
+        only_post: 'false',
+        loading: {
+          gif: '/images/theme/loading.gif',
+          lottie: ''
+        }
+      },
+      donate: {
+        enable: true,
+        alipay: '/images/qrcode/alipay.png',
+        wechat: '/images/qrcode/wechatpay.png'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: true,
+        always_show: false
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: false
+      },
+      preview: {
+        background: {
+          default: '',
+          api: 'https://picsum.photos/1920/1080/?random'
+        },
+        motto: {
+          default: '我在开了灯的床头下，想问问自己的心啊。',
+          typing: true,
+          api: 'https://v2.jinrishici.com/one.json',
+          data_contents: '["data","content"]'
+        },
+      },
+      qrcode: {
+        enable: true,
+        type: 'image',
+        image: '/images/qrcode/wechat.png',
+      },
+      toc: {
+        enable: true
+      },
+      scrollbar: {
+        type: 'default'
+      },
+      notification: {
+        enable: false,
+        delay: 4500,
+        list: '',
+        page_white_list: '',
+        page_black_list: ''
+      },
+      search: {
+        enable: false,
+        path: ''
+      }
+    }
+  </script>
+
+  
+
+  
+
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body class="lock-screen">
+  <div class="loading" id="loading"></div>
+  
+    
+
+
+  <nav class="navbar">
+    <div class="left">
+      
+        <i class="iconfont iconhome j-navbar-back-home"></i>
+      
+      
+        <i class="iconfont iconqrcode j-navbar-qrcode"></i>
+      
+      
+        <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+      
+      
+    </div>
+    <div class="center">负载均衡器常用的算法机制</div>
+    <div class="right">
+      <i class="iconfont iconmenu j-navbar-menu"></i>
+    </div>
+    
+      <div id="qrcode-navbar"></div>
+    
+  </nav>
+
+  
+  
+
+<nav class="menu">
+  <div class="menu-container">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content"><li class="menu-item">
+        <a href="/ " class="underline "> 首页</a>
+      </li><li class="menu-item">
+        <a href="/archives/ " class="underline "> 归档</a>
+      </li><li class="menu-item">
+        <a href="/galleries " class="underline "> 相册</a>
+      </li><li class="menu-item">
+        <a href="/tags/ " class="underline "> 标签</a>
+      </li><li class="menu-item">
+        <a href="/categories/ " class="underline "> 分类</a>
+      </li><li class="menu-item">
+        <a href="/about/ " class="underline "> 关于</a>
+      </li></ul>
+    
+      <div class="menu-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+    
+  </div>
+</nav>
+  <main id="main">
+  <div class="article-wrap">
+    <div class="row container">
+      <div class="col-xl-3"></div>
+      <div class="col-xl-6"><article class="article">
+  <div class="wrap">
+    <section class="head">
+  <img   class="lazyload" data-original="https://img.paulzzh.com/touhou/random" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">负载均衡器常用的算法机制</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>六月 18, 2022</span>
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>1850</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="content">
+        
+        <h1 id="负载均衡器常用的算法机制"><a href="#负载均衡器常用的算法机制" class="headerlink" title="负载均衡器常用的算法机制"></a>负载均衡器常用的算法机制</h1><p>负载均衡器是现代分布式系统中不可或缺的组件，它通过将流量分发到多个服务器，确保系统的高可用性、可扩展性和性能。负载均衡器的核心在于其算法机制，不同的算法适用于不同的场景。本文将介绍几种常见的负载均衡算法机制。</p>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ol>
+<li><a href="#%E8%BD%AE%E8%AF%A2%E7%AE%97%E6%B3%95round-robin">轮询算法（Round Robin）</a></li>
+<li><a href="#%E5%8A%A0%E6%9D%83%E8%BD%AE%E8%AF%A2%E7%AE%97%E6%B3%95weighted-round-robin">加权轮询算法（Weighted Round Robin）</a></li>
+<li><a href="#%E6%9C%80%E5%B0%91%E8%BF%9E%E6%8E%A5%E7%AE%97%E6%B3%95least-connections">最少连接算法（Least Connections）</a></li>
+<li><a href="#%E5%8A%A0%E6%9D%83%E6%9C%80%E5%B0%91%E8%BF%9E%E6%8E%A5%E7%AE%97%E6%B3%95weighted-least-connections">加权最少连接算法（Weighted Least Connections）</a></li>
+<li><a href="#ip-%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95ip-hash">IP 哈希算法（IP Hash）</a></li>
+<li><a href="#%E9%9A%8F%E6%9C%BA%E7%AE%97%E6%B3%95random">随机算法（Random）</a></li>
+<li><a href="#%E4%B8%80%E8%87%B4%E6%80%A7%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95consistent-hashing">一致性哈希算法（Consistent Hashing）</a></li>
+<li><a href="#%E6%80%BB%E7%BB%93">总结</a></li>
+</ol>
+<hr>
+<h2 id="轮询算法（Round-Robin）"><a href="#轮询算法（Round-Robin）" class="headerlink" title="轮询算法（Round Robin）"></a>轮询算法（Round Robin）</h2><h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><p>轮询算法是最简单的负载均衡算法之一。它按顺序将请求依次分发到每个服务器，循环往复。</p>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ul>
+<li>实现简单，易于理解。</li>
+<li>适用于服务器性能相近的场景。</li>
+</ul>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ul>
+<li>无法考虑服务器的实际负载情况。</li>
+<li>如果服务器性能差异较大，可能导致性能较差的服务器过载。</li>
+</ul>
+<h3 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h3><ul>
+<li>服务器性能相近的集群。</li>
+<li>请求分布均匀的场景。</li>
+</ul>
+<hr>
+<h2 id="加权轮询算法（Weighted-Round-Robin）"><a href="#加权轮询算法（Weighted-Round-Robin）" class="headerlink" title="加权轮询算法（Weighted Round Robin）"></a>加权轮询算法（Weighted Round Robin）</h2><h3 id="描述-1"><a href="#描述-1" class="headerlink" title="描述"></a>描述</h3><p>加权轮询算法在轮询算法的基础上引入了权重概念。性能更强的服务器会被分配更高的权重，从而处理更多的请求。</p>
+<h3 id="优点-1"><a href="#优点-1" class="headerlink" title="优点"></a>优点</h3><ul>
+<li>考虑了服务器的性能差异。</li>
+<li>实现相对简单。</li>
+</ul>
+<h3 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h3><ul>
+<li>权重需要手动配置，不够灵活。</li>
+<li>无法动态调整权重。</li>
+</ul>
+<h3 id="适用场景-1"><a href="#适用场景-1" class="headerlink" title="适用场景"></a>适用场景</h3><ul>
+<li>服务器性能差异较大的集群。</li>
+<li>需要根据服务器性能分配流量的场景。</li>
+</ul>
+<hr>
+<h2 id="最少连接算法（Least-Connections）"><a href="#最少连接算法（Least-Connections）" class="headerlink" title="最少连接算法（Least Connections）"></a>最少连接算法（Least Connections）</h2><h3 id="描述-2"><a href="#描述-2" class="headerlink" title="描述"></a>描述</h3><p>最少连接算法将请求分发到当前连接数最少的服务器。它通过动态评估服务器的负载情况来实现更均衡的流量分配。</p>
+<h3 id="优点-2"><a href="#优点-2" class="headerlink" title="优点"></a>优点</h3><ul>
+<li>动态适应服务器的负载变化。</li>
+<li>适用于长连接或请求处理时间差异较大的场景。</li>
+</ul>
+<h3 id="缺点-2"><a href="#缺点-2" class="headerlink" title="缺点"></a>缺点</h3><ul>
+<li>需要实时监控服务器的连接数，增加了复杂度。</li>
+<li>对于短连接场景效果不明显。</li>
+</ul>
+<h3 id="适用场景-2"><a href="#适用场景-2" class="headerlink" title="适用场景"></a>适用场景</h3><ul>
+<li>长连接或请求处理时间差异较大的场景。</li>
+<li>需要动态负载均衡的场景。</li>
+</ul>
+<hr>
+<h2 id="加权最少连接算法（Weighted-Least-Connections）"><a href="#加权最少连接算法（Weighted-Least-Connections）" class="headerlink" title="加权最少连接算法（Weighted Least Connections）"></a>加权最少连接算法（Weighted Least Connections）</h2><h3 id="描述-3"><a href="#描述-3" class="headerlink" title="描述"></a>描述</h3><p>加权最少连接算法结合了最少连接算法和权重概念。它不仅考虑服务器的连接数，还根据服务器的性能分配权重。</p>
+<h3 id="优点-3"><a href="#优点-3" class="headerlink" title="优点"></a>优点</h3><ul>
+<li>综合考虑了服务器的性能和负载情况。</li>
+<li>更加灵活和智能。</li>
+</ul>
+<h3 id="缺点-3"><a href="#缺点-3" class="headerlink" title="缺点"></a>缺点</h3><ul>
+<li>实现复杂度较高。</li>
+<li>需要实时监控服务器的连接数和性能。</li>
+</ul>
+<h3 id="适用场景-3"><a href="#适用场景-3" class="headerlink" title="适用场景"></a>适用场景</h3><ul>
+<li>服务器性能差异较大且负载动态变化的场景。</li>
+</ul>
+<hr>
+<h2 id="IP-哈希算法（IP-Hash）"><a href="#IP-哈希算法（IP-Hash）" class="headerlink" title="IP 哈希算法（IP Hash）"></a>IP 哈希算法（IP Hash）</h2><h3 id="描述-4"><a href="#描述-4" class="headerlink" title="描述"></a>描述</h3><p>IP 哈希算法通过对客户端 IP 地址进行哈希计算，将同一客户端的请求固定分发到同一台服务器。</p>
+<h3 id="优点-4"><a href="#优点-4" class="headerlink" title="优点"></a>优点</h3><ul>
+<li>确保同一客户端的请求始终由同一台服务器处理。</li>
+<li>适用于需要会话保持的场景。</li>
+</ul>
+<h3 id="缺点-4"><a href="#缺点-4" class="headerlink" title="缺点"></a>缺点</h3><ul>
+<li>如果服务器数量变化，哈希结果可能发生变化，导致会话丢失。</li>
+<li>无法动态适应服务器的负载变化。</li>
+</ul>
+<h3 id="适用场景-4"><a href="#适用场景-4" class="headerlink" title="适用场景"></a>适用场景</h3><ul>
+<li>需要会话保持的应用（如购物车、登录状态等）。</li>
+<li>客户端 IP 地址分布均匀的场景。</li>
+</ul>
+<hr>
+<h2 id="随机算法（Random）"><a href="#随机算法（Random）" class="headerlink" title="随机算法（Random）"></a>随机算法（Random）</h2><h3 id="描述-5"><a href="#描述-5" class="headerlink" title="描述"></a>描述</h3><p>随机算法将请求随机分发到服务器。每个服务器被选中的概率相等。</p>
+<h3 id="优点-5"><a href="#优点-5" class="headerlink" title="优点"></a>优点</h3><ul>
+<li>实现简单。</li>
+<li>适用于服务器性能相近的场景。</li>
+</ul>
+<h3 id="缺点-5"><a href="#缺点-5" class="headerlink" title="缺点"></a>缺点</h3><ul>
+<li>无法考虑服务器的实际负载情况。</li>
+<li>可能导致某些服务器负载不均衡。</li>
+</ul>
+<h3 id="适用场景-5"><a href="#适用场景-5" class="headerlink" title="适用场景"></a>适用场景</h3><ul>
+<li>服务器性能相近且请求分布均匀的场景。</li>
+</ul>
+<hr>
+<h2 id="一致性哈希算法（Consistent-Hashing）"><a href="#一致性哈希算法（Consistent-Hashing）" class="headerlink" title="一致性哈希算法（Consistent Hashing）"></a>一致性哈希算法（Consistent Hashing）</h2><h3 id="描述-6"><a href="#描述-6" class="headerlink" title="描述"></a>描述</h3><p>一致性哈希算法通过哈希函数将服务器和请求映射到一个环形空间中。请求会被分发到离其哈希值最近的服务器。</p>
+<h3 id="优点-6"><a href="#优点-6" class="headerlink" title="优点"></a>优点</h3><ul>
+<li>在服务器动态增减时，影响范围较小。</li>
+<li>适用于分布式缓存和动态扩展的场景。</li>
+</ul>
+<h3 id="缺点-6"><a href="#缺点-6" class="headerlink" title="缺点"></a>缺点</h3><ul>
+<li>实现复杂度较高。</li>
+<li>需要额外的虚拟节点来保证均衡性。</li>
+</ul>
+<h3 id="适用场景-6"><a href="#适用场景-6" class="headerlink" title="适用场景"></a>适用场景</h3><ul>
+<li>分布式缓存系统（如 Redis、Memcached）。</li>
+<li>需要动态扩展的集群。</li>
+</ul>
+<hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>不同的负载均衡算法适用于不同的场景。选择合适的算法可以显著提高系统的性能和稳定性。以下是各算法的适用场景总结：</p>
+<table>
+<thead>
+<tr>
+<th>算法</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>轮询算法</td>
+<td>服务器性能相近，请求分布均匀的场景</td>
+</tr>
+<tr>
+<td>加权轮询算法</td>
+<td>服务器性能差异较大的场景</td>
+</tr>
+<tr>
+<td>最少连接算法</td>
+<td>长连接或请求处理时间差异较大的场景</td>
+</tr>
+<tr>
+<td>加权最少连接算法</td>
+<td>服务器性能差异较大且负载动态变化的场景</td>
+</tr>
+<tr>
+<td>IP 哈希算法</td>
+<td>需要会话保持的场景</td>
+</tr>
+<tr>
+<td>随机算法</td>
+<td>服务器性能相近且请求分布均匀的场景</td>
+</tr>
+<tr>
+<td>一致性哈希算法</td>
+<td>分布式缓存系统或需要动态扩展的场景</td>
+</tr>
+</tbody></table>
+<p>在实际应用中，可以根据业务需求和系统特点选择合适的负载均衡算法，或者结合多种算法实现更智能的负载均衡策略。</p>
+
+      </section>
+      <section class="extra">
+        
+          <ul class="copyright">
+  
+    <li><strong>本文作者：</strong>Tingyu</li>
+    <li><strong>本文链接：</strong><a href="http://blog.4040940.xyz/2022/06/17/loadbalance/index.html" title="http:&#x2F;&#x2F;blog.4040940.xyz&#x2F;2022&#x2F;06&#x2F;17&#x2F;loadbalance&#x2F;index.html">http:&#x2F;&#x2F;blog.4040940.xyz&#x2F;2022&#x2F;06&#x2F;17&#x2F;loadbalance&#x2F;index.html</a></li>
+    <li><strong>版权声明：</strong>本博客所有文章均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" title="BY-NC-SA" target="_blank" rel="noopener">BY-NC-SA</a> 许可协议，转载请注明出处！</li>
+  
+</ul>
+        
+        
+          <section class="donate">
+  <div id="qrcode-donate">
+    <img   class="lazyload" data-original="/images/qrcode/alipay.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" >
+  </div>
+  <div class="icon">
+    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
+    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
+  </div>
+</section>
+        
+        
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/network/" rel="tag">network</a></li></ul> 
+
+        
+  <nav class="nav">
+    <a href="/2022/07/27/pediatric-colds/"><i class="iconfont iconleft"></i>小儿小病摘录</a>
+    <a href="/2022/06/14/besttrace/">BestTrace<i class="iconfont iconright"></i></a>
+  </nav>
+
+      </section>
+      
+        <section class="comments">
+  
+    <div class="btn" id="comments-btn">查看评论</div>
+  
+  
+<div id="SOHUCS"></div>
+<script type="text/javascript">
+  window.onload = function () {
+    var loadChangYan = function () {
+      var appid = 'cywclrjGA';
+      var conf = '384bbffa8b7a0ee1a75c3b1583ebf924';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+        var head = document.getElementsByTagName('head')[0] || document.head || document.documentElement;
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.charset = 'utf-8';
+        script.id = 'changyan_mobile_js';
+        script.src = 'https://cy-cdn.kuaizhan.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid +
+          '&conf=' + conf;
+        head.appendChild(script);
+      } else {
+        var loadJs = function (d, a) {
+          var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+          var b = document.createElement("script");
+          b.setAttribute("type", "text/javascript");
+          b.setAttribute("charset", "UTF-8");
+          b.setAttribute("src", d);
+          if (typeof a === "function") {
+            if (window.attachEvent) {
+              b.onreadystatechange = function () {
+                var e = b.readyState;
+                if (e === "loaded" || e === "complete") {
+                  b.onreadystatechange = null;
+                  a()
+                }
+              }
+            } else {
+              b.onload = a
+            }
+          }
+          c.appendChild(b)
+        };
+        loadJs("https://cy-cdn.kuaizhan.com/upload/changyan.js", function () {
+          window.changyan.api.config({
+            appid: appid,
+            conf: conf
+          })
+        });
+      }
+    }
+    if ( true ) {
+      $("#comments-btn").on("click", function () {
+        $(this).hide();
+        loadChangYan();
+      });
+    } else {
+      loadChangYan();
+    }
+  }
+</script>
+
+</section>
+      
+    </section>
+  </div>
+</article></div>
+      <div class="col-xl-3">
+        
+          
+  <aside class="toc-wrap">
+    <h3 class="toc-title">文章目录：</h3>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%99%A8%E5%B8%B8%E7%94%A8%E7%9A%84%E7%AE%97%E6%B3%95%E6%9C%BA%E5%88%B6"><span class="toc-text">负载均衡器常用的算法机制</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95"><span class="toc-text">目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AE%E8%AF%A2%E7%AE%97%E6%B3%95%EF%BC%88Round-Robin%EF%BC%89"><span class="toc-text">轮询算法（Round Robin）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0"><span class="toc-text">描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E7%82%B9"><span class="toc-text">优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%BA%E7%82%B9"><span class="toc-text">缺点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text">适用场景</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A0%E6%9D%83%E8%BD%AE%E8%AF%A2%E7%AE%97%E6%B3%95%EF%BC%88Weighted-Round-Robin%EF%BC%89"><span class="toc-text">加权轮询算法（Weighted Round Robin）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0-1"><span class="toc-text">描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E7%82%B9-1"><span class="toc-text">优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%BA%E7%82%B9-1"><span class="toc-text">缺点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF-1"><span class="toc-text">适用场景</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%B0%91%E8%BF%9E%E6%8E%A5%E7%AE%97%E6%B3%95%EF%BC%88Least-Connections%EF%BC%89"><span class="toc-text">最少连接算法（Least Connections）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0-2"><span class="toc-text">描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E7%82%B9-2"><span class="toc-text">优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%BA%E7%82%B9-2"><span class="toc-text">缺点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF-2"><span class="toc-text">适用场景</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A0%E6%9D%83%E6%9C%80%E5%B0%91%E8%BF%9E%E6%8E%A5%E7%AE%97%E6%B3%95%EF%BC%88Weighted-Least-Connections%EF%BC%89"><span class="toc-text">加权最少连接算法（Weighted Least Connections）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0-3"><span class="toc-text">描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E7%82%B9-3"><span class="toc-text">优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%BA%E7%82%B9-3"><span class="toc-text">缺点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF-3"><span class="toc-text">适用场景</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IP-%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95%EF%BC%88IP-Hash%EF%BC%89"><span class="toc-text">IP 哈希算法（IP Hash）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0-4"><span class="toc-text">描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E7%82%B9-4"><span class="toc-text">优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%BA%E7%82%B9-4"><span class="toc-text">缺点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF-4"><span class="toc-text">适用场景</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9A%8F%E6%9C%BA%E7%AE%97%E6%B3%95%EF%BC%88Random%EF%BC%89"><span class="toc-text">随机算法（Random）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0-5"><span class="toc-text">描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E7%82%B9-5"><span class="toc-text">优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%BA%E7%82%B9-5"><span class="toc-text">缺点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF-5"><span class="toc-text">适用场景</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E8%87%B4%E6%80%A7%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95%EF%BC%88Consistent-Hashing%EF%BC%89"><span class="toc-text">一致性哈希算法（Consistent Hashing）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0-6"><span class="toc-text">描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E7%82%B9-6"><span class="toc-text">优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%BA%E7%82%B9-6"><span class="toc-text">缺点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF-6"><span class="toc-text">适用场景</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></li></ol>
+  </aside>
+
+        
+      </div>
+    </div>
+  </div>
+</main>
+  
+
+<footer class="footer">
+  <div class="footer-social"><a 
+        href="weixin://dl/business/?t=3lfnmOoORsu "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#09BB07'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconwechat-fill "></i>
+      </a><a 
+        href="https://github.com/TingyuShare "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#9f7be1'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  icongithub-fill "></i>
+      </a><a 
+        href="mailto:ting_yumail@163.com "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color=#FF3B00" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconmail"></i>
+      </a></div>
+  
+    <div class="footer-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+  
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  
+  
+  
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  
+  
+  
+    
+<script src="/js/color-mode.js"></script>
+
+  
+  
+</body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

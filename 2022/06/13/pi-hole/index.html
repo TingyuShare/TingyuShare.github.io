@@ -1,0 +1,545 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" color-mode=light>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Pi-hole - VISION</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+  <meta name="keywords" content="blog fun idea">
+  <meta name="description" content="Pi-hole 用法指南Pi-hole 是一款开源的网...">
+  <meta name="author" content="Tingyu">
+  <link rel="icon" href="/images/icon/favicon-16x16.png" type="image/png" sizes="16x16">
+  <link rel="icon" href="/images/icon/favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/images/icon/apple-touch-icon.png" sizes="180x180">
+  <meta rel="mask-icon" href="/images/icon/stun-logo.svg" color="#333333">
+  
+    <meta rel="msapplication-TileImage" content="/images/icon/favicon-144x144.png">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+    
+<link rel="stylesheet" href="https://at.alicdn.com/t/font_1445822_p6ry5n7lrr.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+    
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css" name="highlight-style" mode="light">
+
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/solarized-dark.min.css" name="highlight-style" mode="dark">
+
+      
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      loading: {
+        gif: '/images/theme/loading.gif',
+        lottie: ''
+      },
+      lazyload: {
+        enable: true,
+        only_post: 'false',
+        loading: {
+          gif: '/images/theme/loading.gif',
+          lottie: ''
+        }
+      },
+      donate: {
+        enable: true,
+        alipay: '/images/qrcode/alipay.png',
+        wechat: '/images/qrcode/wechatpay.png'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: true,
+        always_show: false
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: false
+      },
+      preview: {
+        background: {
+          default: '',
+          api: 'https://picsum.photos/1920/1080/?random'
+        },
+        motto: {
+          default: '我在开了灯的床头下，想问问自己的心啊。',
+          typing: true,
+          api: 'https://v2.jinrishici.com/one.json',
+          data_contents: '["data","content"]'
+        },
+      },
+      qrcode: {
+        enable: true,
+        type: 'image',
+        image: '/images/qrcode/wechat.png',
+      },
+      toc: {
+        enable: true
+      },
+      scrollbar: {
+        type: 'default'
+      },
+      notification: {
+        enable: false,
+        delay: 4500,
+        list: '',
+        page_white_list: '',
+        page_black_list: ''
+      },
+      search: {
+        enable: false,
+        path: ''
+      }
+    }
+  </script>
+
+  
+
+  
+
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body class="lock-screen">
+  <div class="loading" id="loading"></div>
+  
+    
+
+
+  <nav class="navbar">
+    <div class="left">
+      
+        <i class="iconfont iconhome j-navbar-back-home"></i>
+      
+      
+        <i class="iconfont iconqrcode j-navbar-qrcode"></i>
+      
+      
+        <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+      
+      
+    </div>
+    <div class="center">Pi-hole</div>
+    <div class="right">
+      <i class="iconfont iconmenu j-navbar-menu"></i>
+    </div>
+    
+      <div id="qrcode-navbar"></div>
+    
+  </nav>
+
+  
+  
+
+<nav class="menu">
+  <div class="menu-container">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content"><li class="menu-item">
+        <a href="/ " class="underline "> 首页</a>
+      </li><li class="menu-item">
+        <a href="/archives/ " class="underline "> 归档</a>
+      </li><li class="menu-item">
+        <a href="/galleries " class="underline "> 相册</a>
+      </li><li class="menu-item">
+        <a href="/tags/ " class="underline "> 标签</a>
+      </li><li class="menu-item">
+        <a href="/categories/ " class="underline "> 分类</a>
+      </li><li class="menu-item">
+        <a href="/about/ " class="underline "> 关于</a>
+      </li></ul>
+    
+      <div class="menu-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+    
+  </div>
+</nav>
+  <main id="main">
+  <div class="article-wrap">
+    <div class="row container">
+      <div class="col-xl-3"></div>
+      <div class="col-xl-6"><article class="article">
+  <div class="wrap">
+    <section class="head">
+  <img   class="lazyload" data-original="https://api.yimian.xyz/img?type=wallpaper" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">Pi-hole</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>六月 14, 2022</span>
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>1620</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="content">
+        
+        <h1 id="Pi-hole-用法指南"><a href="#Pi-hole-用法指南" class="headerlink" title="Pi-hole 用法指南"></a>Pi-hole 用法指南</h1><p>Pi-hole 是一款开源的网络广告拦截工具，通过在网络层面拦截广告域名，保护整个网络的设备免受广告侵扰。它不仅可以拦截广告，还能提高网络速度、增强隐私保护。本文将介绍 Pi-hole 的安装、配置以及基本使用方法。</p>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ol>
+<li><a href="#%E4%BB%80%E4%B9%88%E6%98%AF-pi-hole">什么是 Pi-hole？</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85-pi-hole">安装 Pi-hole</a><ul>
+<li><a href="#%E7%A1%AC%E4%BB%B6%E8%A6%81%E6%B1%82">硬件要求</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4">安装步骤</a></li>
+</ul>
+</li>
+<li><a href="#%E9%85%8D%E7%BD%AE-pi-hole">配置 Pi-hole</a><ul>
+<li><a href="#%E8%AE%BE%E7%BD%AE-dns">设置 DNS</a></li>
+<li><a href="#%E7%AE%A1%E7%90%86%E7%95%8C%E9%9D%A2">管理界面</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BD%BF%E7%94%A8-pi-hole">使用 Pi-hole</a><ul>
+<li><a href="#%E5%B9%BF%E5%91%8A%E6%8B%A6%E6%88%AA">广告拦截</a></li>
+<li><a href="#%E7%99%BD%E5%90%8D%E5%8D%95%E4%B8%8E%E9%BB%91%E5%90%8D%E5%8D%95">白名单与黑名单</a></li>
+<li><a href="#%E6%9F%A5%E7%9C%8B%E7%BB%9F%E8%AE%A1%E6%95%B0%E6%8D%AE">查看统计数据</a></li>
+</ul>
+</li>
+<li><a href="#%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD">高级功能</a><ul>
+<li><a href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E8%BF%87%E6%BB%A4%E5%99%A8">自定义过滤器</a></li>
+<li><a href="#%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AE">远程访问</a></li>
+</ul>
+</li>
+<li><a href="#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98">常见问题</a></li>
+<li><a href="#%E6%80%BB%E7%BB%93">总结</a></li>
+</ol>
+<hr>
+<h2 id="什么是-Pi-hole？"><a href="#什么是-Pi-hole？" class="headerlink" title="什么是 Pi-hole？"></a>什么是 Pi-hole？</h2><p>Pi-hole 是一个网络级的广告拦截工具，通过在 DNS 层面拦截广告域名，阻止广告加载到用户的设备上。它的特点包括：</p>
+<ul>
+<li><strong>全网拦截</strong>：保护网络中的所有设备，包括手机、电脑、智能电视等。</li>
+<li><strong>隐私保护</strong>：阻止广告跟踪器，减少隐私泄露风险。</li>
+<li><strong>性能提升</strong>：减少广告流量，加快网页加载速度。</li>
+</ul>
+<hr>
+<h2 id="安装-Pi-hole"><a href="#安装-Pi-hole" class="headerlink" title="安装 Pi-hole"></a>安装 Pi-hole</h2><h3 id="硬件要求"><a href="#硬件要求" class="headerlink" title="硬件要求"></a>硬件要求</h3><ul>
+<li>一台 Raspberry Pi 或其他 Linux 设备。</li>
+<li>稳定的网络连接。</li>
+</ul>
+<h3 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h3><ol>
+<li><p><strong>安装依赖</strong><br>确保系统已安装 <code>curl</code> 和 <code>git</code>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt update<br>sudo apt install curl git<br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>下载安装脚本</strong><br>使用以下命令下载并运行 Pi-hole 的安装脚本：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">curl -sSL https://install.pi-hole.net | bash<br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>按照提示完成安装</strong><br>安装过程中会提示选择 DNS 提供商、设置管理员密码等。按照提示操作即可。</p>
+</li>
+<li><p><strong>完成安装</strong><br>安装完成后，记下显示的 Pi-hole 管理界面地址（如 <code>http://192.168.1.100/admin</code>）。</p>
+</li>
+</ol>
+<hr>
+<h2 id="配置-Pi-hole"><a href="#配置-Pi-hole" class="headerlink" title="配置 Pi-hole"></a>配置 Pi-hole</h2><h3 id="设置-DNS"><a href="#设置-DNS" class="headerlink" title="设置 DNS"></a>设置 DNS</h3><ol>
+<li>登录路由器管理界面。</li>
+<li>将 DNS 服务器地址设置为 Pi-hole 的 IP 地址。</li>
+<li>保存设置并重启路由器。</li>
+</ol>
+<h3 id="管理界面"><a href="#管理界面" class="headerlink" title="管理界面"></a>管理界面</h3><ol>
+<li>在浏览器中访问 Pi-hole 管理界面（如 <code>http://192.168.1.100/admin</code>）。</li>
+<li>输入安装时设置的管理员密码登录。</li>
+</ol>
+<hr>
+<h2 id="使用-Pi-hole"><a href="#使用-Pi-hole" class="headerlink" title="使用 Pi-hole"></a>使用 Pi-hole</h2><h3 id="广告拦截"><a href="#广告拦截" class="headerlink" title="广告拦截"></a>广告拦截</h3><p>Pi-hole 默认会拦截常见的广告域名。启用后，所有连接到网络的设备都会自动受到保护。</p>
+<h3 id="白名单与黑名单"><a href="#白名单与黑名单" class="headerlink" title="白名单与黑名单"></a>白名单与黑名单</h3><ol>
+<li><p><strong>白名单</strong><br>如果某些网站或服务被误拦截，可以将其添加到白名单：</p>
+<ul>
+<li>在管理界面中，点击 <strong>Whitelist</strong>。</li>
+<li>输入域名并保存。</li>
+</ul>
+</li>
+<li><p><strong>黑名单</strong><br>如果需要手动拦截某些域名，可以将其添加到黑名单：</p>
+<ul>
+<li>在管理界面中，点击 <strong>Blacklist</strong>。</li>
+<li>输入域名并保存。</li>
+</ul>
+</li>
+</ol>
+<h3 id="查看统计数据"><a href="#查看统计数据" class="headerlink" title="查看统计数据"></a>查看统计数据</h3><p>Pi-hole 提供详细的统计数据，包括：</p>
+<ul>
+<li>拦截的广告数量。</li>
+<li>查询的域名数量。</li>
+<li>设备的活动情况。</li>
+</ul>
+<p>在管理界面的 <strong>Dashboard</strong> 中可以查看这些数据。</p>
+<hr>
+<h2 id="高级功能"><a href="#高级功能" class="headerlink" title="高级功能"></a>高级功能</h2><h3 id="自定义过滤器"><a href="#自定义过滤器" class="headerlink" title="自定义过滤器"></a>自定义过滤器</h3><p>Pi-hole 支持自定义过滤器规则，可以拦截特定的域名或内容。例如：</p>
+<ul>
+<li>拦截社交媒体跟踪器。</li>
+<li>阻止恶意软件域名。</li>
+</ul>
+<p>在管理界面的 <strong>Group Management</strong> 中可以添加自定义过滤器。</p>
+<h3 id="远程访问"><a href="#远程访问" class="headerlink" title="远程访问"></a>远程访问</h3><p>通过配置动态 DNS 或 VPN，可以远程访问 Pi-hole 管理界面，随时随地管理网络。</p>
+<hr>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><h3 id="1-Pi-hole-拦截了正常网站怎么办？"><a href="#1-Pi-hole-拦截了正常网站怎么办？" class="headerlink" title="1. Pi-hole 拦截了正常网站怎么办？"></a>1. Pi-hole 拦截了正常网站怎么办？</h3><ul>
+<li>将误拦截的域名添加到白名单。</li>
+</ul>
+<h3 id="2-如何更新-Pi-hole？"><a href="#2-如何更新-Pi-hole？" class="headerlink" title="2. 如何更新 Pi-hole？"></a>2. 如何更新 Pi-hole？</h3><ul>
+<li>使用以下命令更新 Pi-hole：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pihole -up<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="3-Pi-hole-会影响网络速度吗？"><a href="#3-Pi-hole-会影响网络速度吗？" class="headerlink" title="3. Pi-hole 会影响网络速度吗？"></a>3. Pi-hole 会影响网络速度吗？</h3><ul>
+<li>Pi-hole 通常会提高网络速度，因为它减少了广告流量。</li>
+</ul>
+<hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Pi-hole 是一款功能强大的广告拦截工具，能够有效保护整个网络的设备免受广告侵扰。通过简单的安装和配置，你可以享受更干净、更快速的网络体验。如果你对隐私保护和网络性能有较高要求，Pi-hole 是一个不可错过的工具。</p>
+<p>如果有任何问题或建议，欢迎在评论区留言。</p>
+<hr>
+<p><strong>参考链接：</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://pi-hole.net/">Pi-hole 官方网站</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/pi-hole/pi-hole">Pi-hole GitHub 页面</a></li>
+</ul>
+
+      </section>
+      <section class="extra">
+        
+          <ul class="copyright">
+  
+    <li><strong>本文作者：</strong>Tingyu</li>
+    <li><strong>本文链接：</strong><a href="http://blog.4040940.xyz/2022/06/13/pi-hole/index.html" title="http:&#x2F;&#x2F;blog.4040940.xyz&#x2F;2022&#x2F;06&#x2F;13&#x2F;pi-hole&#x2F;index.html">http:&#x2F;&#x2F;blog.4040940.xyz&#x2F;2022&#x2F;06&#x2F;13&#x2F;pi-hole&#x2F;index.html</a></li>
+    <li><strong>版权声明：</strong>本博客所有文章均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" title="BY-NC-SA" target="_blank" rel="noopener">BY-NC-SA</a> 许可协议，转载请注明出处！</li>
+  
+</ul>
+        
+        
+          <section class="donate">
+  <div id="qrcode-donate">
+    <img   class="lazyload" data-original="/images/qrcode/alipay.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" >
+  </div>
+  <div class="icon">
+    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
+    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
+  </div>
+</section>
+        
+        
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/network/" rel="tag">network</a></li></ul> 
+
+        
+  <nav class="nav">
+    <a href="/2022/06/14/besttrace/"><i class="iconfont iconleft"></i>BestTrace</a>
+    <a href="/2022/06/12/frp-expose-lan/">FRP 暴露你的本地服务<i class="iconfont iconright"></i></a>
+  </nav>
+
+      </section>
+      
+        <section class="comments">
+  
+    <div class="btn" id="comments-btn">查看评论</div>
+  
+  
+<div id="SOHUCS"></div>
+<script type="text/javascript">
+  window.onload = function () {
+    var loadChangYan = function () {
+      var appid = 'cywclrjGA';
+      var conf = '384bbffa8b7a0ee1a75c3b1583ebf924';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+        var head = document.getElementsByTagName('head')[0] || document.head || document.documentElement;
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.charset = 'utf-8';
+        script.id = 'changyan_mobile_js';
+        script.src = 'https://cy-cdn.kuaizhan.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid +
+          '&conf=' + conf;
+        head.appendChild(script);
+      } else {
+        var loadJs = function (d, a) {
+          var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+          var b = document.createElement("script");
+          b.setAttribute("type", "text/javascript");
+          b.setAttribute("charset", "UTF-8");
+          b.setAttribute("src", d);
+          if (typeof a === "function") {
+            if (window.attachEvent) {
+              b.onreadystatechange = function () {
+                var e = b.readyState;
+                if (e === "loaded" || e === "complete") {
+                  b.onreadystatechange = null;
+                  a()
+                }
+              }
+            } else {
+              b.onload = a
+            }
+          }
+          c.appendChild(b)
+        };
+        loadJs("https://cy-cdn.kuaizhan.com/upload/changyan.js", function () {
+          window.changyan.api.config({
+            appid: appid,
+            conf: conf
+          })
+        });
+      }
+    }
+    if ( true ) {
+      $("#comments-btn").on("click", function () {
+        $(this).hide();
+        loadChangYan();
+      });
+    } else {
+      loadChangYan();
+    }
+  }
+</script>
+
+</section>
+      
+    </section>
+  </div>
+</article></div>
+      <div class="col-xl-3">
+        
+          
+  <aside class="toc-wrap">
+    <h3 class="toc-title">文章目录：</h3>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Pi-hole-%E7%94%A8%E6%B3%95%E6%8C%87%E5%8D%97"><span class="toc-text">Pi-hole 用法指南</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95"><span class="toc-text">目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-Pi-hole%EF%BC%9F"><span class="toc-text">什么是 Pi-hole？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-Pi-hole"><span class="toc-text">安装 Pi-hole</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A1%AC%E4%BB%B6%E8%A6%81%E6%B1%82"><span class="toc-text">硬件要求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4"><span class="toc-text">安装步骤</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE-Pi-hole"><span class="toc-text">配置 Pi-hole</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE-DNS"><span class="toc-text">设置 DNS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%A1%E7%90%86%E7%95%8C%E9%9D%A2"><span class="toc-text">管理界面</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-Pi-hole"><span class="toc-text">使用 Pi-hole</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%BF%E5%91%8A%E6%8B%A6%E6%88%AA"><span class="toc-text">广告拦截</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%99%BD%E5%90%8D%E5%8D%95%E4%B8%8E%E9%BB%91%E5%90%8D%E5%8D%95"><span class="toc-text">白名单与黑名单</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E7%BB%9F%E8%AE%A1%E6%95%B0%E6%8D%AE"><span class="toc-text">查看统计数据</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD"><span class="toc-text">高级功能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="toc-text">自定义过滤器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AE"><span class="toc-text">远程访问</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="toc-text">常见问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Pi-hole-%E6%8B%A6%E6%88%AA%E4%BA%86%E6%AD%A3%E5%B8%B8%E7%BD%91%E7%AB%99%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F"><span class="toc-text">1. Pi-hole 拦截了正常网站怎么办？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%A6%82%E4%BD%95%E6%9B%B4%E6%96%B0-Pi-hole%EF%BC%9F"><span class="toc-text">2. 如何更新 Pi-hole？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Pi-hole-%E4%BC%9A%E5%BD%B1%E5%93%8D%E7%BD%91%E7%BB%9C%E9%80%9F%E5%BA%A6%E5%90%97%EF%BC%9F"><span class="toc-text">3. Pi-hole 会影响网络速度吗？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></li></ol>
+  </aside>
+
+        
+      </div>
+    </div>
+  </div>
+</main>
+  
+
+<footer class="footer">
+  <div class="footer-social"><a 
+        href="weixin://dl/business/?t=3lfnmOoORsu "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#09BB07'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconwechat-fill "></i>
+      </a><a 
+        href="https://github.com/TingyuShare "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#9f7be1'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  icongithub-fill "></i>
+      </a><a 
+        href="mailto:ting_yumail@163.com "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color=#FF3B00" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconmail"></i>
+      </a></div>
+  
+    <div class="footer-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+  
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  
+  
+  
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  
+  
+  
+    
+<script src="/js/color-mode.js"></script>
+
+  
+  
+</body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>
