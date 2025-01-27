@@ -1,0 +1,475 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" color-mode=light>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Docker Compose - VISION</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+  <meta name="keywords" content="blog fun idea">
+  <meta name="description" content="使用 Docker Compose 部署应用在现代软件...">
+  <meta name="author" content="Tingyu">
+  <link rel="icon" href="/images/icon/favicon-16x16.png" type="image/png" sizes="16x16">
+  <link rel="icon" href="/images/icon/favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/images/icon/apple-touch-icon.png" sizes="180x180">
+  <meta rel="mask-icon" href="/images/icon/stun-logo.svg" color="#333333">
+  
+    <meta rel="msapplication-TileImage" content="/images/icon/favicon-144x144.png">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+    
+<link rel="stylesheet" href="https://at.alicdn.com/t/font_1445822_p6ry5n7lrr.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+    
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css" name="highlight-style" mode="light">
+
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/solarized-dark.min.css" name="highlight-style" mode="dark">
+
+      
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      loading: {
+        gif: '/images/theme/loading.gif',
+        lottie: ''
+      },
+      lazyload: {
+        enable: true,
+        only_post: 'false',
+        loading: {
+          gif: '/images/theme/loading.gif',
+          lottie: ''
+        }
+      },
+      donate: {
+        enable: true,
+        alipay: '/images/qrcode/alipay.png',
+        wechat: '/images/qrcode/wechatpay.png'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: true,
+        always_show: false
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: false
+      },
+      preview: {
+        background: {
+          default: '',
+          api: 'https://picsum.photos/1920/1080/?random'
+        },
+        motto: {
+          default: '我在开了灯的床头下，想问问自己的心啊。',
+          typing: true,
+          api: 'https://v2.jinrishici.com/one.json',
+          data_contents: '["data","content"]'
+        },
+      },
+      qrcode: {
+        enable: true,
+        type: 'image',
+        image: '/images/qrcode/wechat.png',
+      },
+      toc: {
+        enable: true
+      },
+      scrollbar: {
+        type: 'default'
+      },
+      notification: {
+        enable: false,
+        delay: 4500,
+        list: '',
+        page_white_list: '',
+        page_black_list: ''
+      },
+      search: {
+        enable: false,
+        path: ''
+      }
+    }
+  </script>
+
+  
+
+  
+
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body class="lock-screen">
+  <div class="loading" id="loading"></div>
+  
+    
+
+
+  <nav class="navbar">
+    <div class="left">
+      
+        <i class="iconfont iconhome j-navbar-back-home"></i>
+      
+      
+        <i class="iconfont iconqrcode j-navbar-qrcode"></i>
+      
+      
+        <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+      
+      
+    </div>
+    <div class="center">Docker Compose</div>
+    <div class="right">
+      <i class="iconfont iconmenu j-navbar-menu"></i>
+    </div>
+    
+      <div id="qrcode-navbar"></div>
+    
+  </nav>
+
+  
+  
+
+<nav class="menu">
+  <div class="menu-container">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content"><li class="menu-item">
+        <a href="/ " class="underline "> 首页</a>
+      </li><li class="menu-item">
+        <a href="/archives/ " class="underline "> 归档</a>
+      </li><li class="menu-item">
+        <a href="/galleries " class="underline "> 相册</a>
+      </li><li class="menu-item">
+        <a href="/tags/ " class="underline "> 标签</a>
+      </li><li class="menu-item">
+        <a href="/categories/ " class="underline "> 分类</a>
+      </li><li class="menu-item">
+        <a href="/about/ " class="underline "> 关于</a>
+      </li></ul>
+    
+      <div class="menu-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+    
+  </div>
+</nav>
+  <main id="main">
+  <div class="article-wrap">
+    <div class="row container">
+      <div class="col-xl-3"></div>
+      <div class="col-xl-6"><article class="article">
+  <div class="wrap">
+    <section class="head">
+  <img   class="lazyload" data-original="https://img.xjh.me/random_img.php?type=bg&ctype=nature&return=302" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">Docker Compose</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>八月 08, 2023</span>
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>2409</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="content">
+        
+        <h1 id="使用-Docker-Compose-部署应用"><a href="#使用-Docker-Compose-部署应用" class="headerlink" title="使用 Docker Compose 部署应用"></a>使用 Docker Compose 部署应用</h1><p>在现代软件开发中，容器化技术已经成为一种标准实践。Docker 是最流行的容器化平台之一，而 Docker Compose 则是一个用于定义和运行多容器 Docker 应用的工具。通过 Docker Compose，你可以使用一个 YAML 文件来配置应用的服务、网络和卷，然后通过一个简单的命令启动整个应用。</p>
+<h2 id="什么是-Docker-Compose？"><a href="#什么是-Docker-Compose？" class="headerlink" title="什么是 Docker Compose？"></a>什么是 Docker Compose？</h2><p>Docker Compose 是一个用于定义和运行多容器 Docker 应用的工具。它允许你使用一个 <code>docker-compose.yml</code> 文件来配置应用的服务、网络和卷。通过 Docker Compose，你可以轻松地启动、停止和重建应用的所有服务。</p>
+<h2 id="安装-Docker-Compose"><a href="#安装-Docker-Compose" class="headerlink" title="安装 Docker Compose"></a>安装 Docker Compose</h2><p>在开始使用 Docker Compose 之前，你需要确保已经安装了 Docker。Docker Compose 通常与 Docker 一起安装，但如果你需要单独安装，可以按照以下步骤进行：</p>
+<h3 id="在-Linux-上安装-Docker-Compose"><a href="#在-Linux-上安装-Docker-Compose" class="headerlink" title="在 Linux 上安装 Docker Compose"></a>在 Linux 上安装 Docker Compose</h3><ol>
+<li><p>下载 Docker Compose 二进制文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo curl -L <span class="hljs-string">&quot;https://github.com/docker/compose/releases/download/<span class="hljs-subst">$(curl -s https://api.github.com/repos/docker/compose/releases/latest | grep -Po &#x27;<span class="hljs-string">&quot;tag_name&quot;</span>: <span class="hljs-string">&quot;\K.*\d&#x27;)&quot;</span> /usr/local/bin/docker-compose</span></span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>赋予二进制文件可执行权限：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo <span class="hljs-built_in">chmod</span> +x /usr/local/bin/docker-compose<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>验证安装：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker-compose --version<br></code></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="在-Windows-和-macOS-上安装-Docker-Compose"><a href="#在-Windows-和-macOS-上安装-Docker-Compose" class="headerlink" title="在 Windows 和 macOS 上安装 Docker Compose"></a>在 Windows 和 macOS 上安装 Docker Compose</h3><p>在 Windows 和 macOS 上，Docker Compose 通常与 Docker Desktop 一起安装。你可以通过 Docker Desktop 的安装程序来安装 Docker Compose。</p>
+<h2 id="编写-docker-compose-yml-文件"><a href="#编写-docker-compose-yml-文件" class="headerlink" title="编写 docker-compose.yml 文件"></a>编写 <code>docker-compose.yml</code> 文件</h2><p><code>docker-compose.yml</code> 文件是 Docker Compose 的核心配置文件。它定义了应用的服务、网络和卷。以下是一个简单的 <code>docker-compose.yml</code> 文件示例，用于部署一个包含 Web 服务和数据库的应用：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">version:</span> <span class="hljs-string">&#x27;3.8&#x27;</span><br><br><span class="hljs-attr">services:</span><br>  <span class="hljs-attr">web:</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">nginx:latest</span><br>    <span class="hljs-attr">ports:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&quot;80:80&quot;</span><br>    <span class="hljs-attr">volumes:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">./html:/usr/share/nginx/html</span><br>    <span class="hljs-attr">networks:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">mynetwork</span><br><br>  <span class="hljs-attr">db:</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">mysql:5.7</span><br>    <span class="hljs-attr">environment:</span><br>      <span class="hljs-attr">MYSQL_ROOT_PASSWORD:</span> <span class="hljs-string">example</span><br>      <span class="hljs-attr">MYSQL_DATABASE:</span> <span class="hljs-string">mydb</span><br>      <span class="hljs-attr">MYSQL_USER:</span> <span class="hljs-string">user</span><br>      <span class="hljs-attr">MYSQL_PASSWORD:</span> <span class="hljs-string">password</span><br>    <span class="hljs-attr">volumes:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">db_data:/var/lib/mysql</span><br>    <span class="hljs-attr">networks:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">mynetwork</span><br><br><span class="hljs-attr">volumes:</span><br>  <span class="hljs-attr">db_data:</span><br><br><span class="hljs-attr">networks:</span><br>  <span class="hljs-attr">mynetwork:</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h3><ul>
+<li><code>version</code>: 指定 Docker Compose 文件的版本。</li>
+<li><code>services</code>: 定义应用的服务。在这个例子中，我们定义了两个服务：<code>web</code> 和 <code>db</code>。<ul>
+<li><code>web</code>: 使用 <code>nginx:latest</code> 镜像，将主机的 80 端口映射到容器的 80 端口，并将主机的 <code>./html</code> 目录挂载到容器的 <code>/usr/share/nginx/html</code> 目录。</li>
+<li><code>db</code>: 使用 <code>mysql:5.7</code> 镜像，设置了一些环境变量来配置 MySQL 数据库，并将数据库数据存储在名为 <code>db_data</code> 的卷中。</li>
+</ul>
+</li>
+<li><code>volumes</code>: 定义了一个名为 <code>db_data</code> 的卷，用于持久化数据库数据。</li>
+<li><code>networks</code>: 定义了一个名为 <code>mynetwork</code> 的网络，用于连接 <code>web</code> 和 <code>db</code> 服务。</li>
+</ul>
+<h2 id="启动应用"><a href="#启动应用" class="headerlink" title="启动应用"></a>启动应用</h2><p>在编写好 <code>docker-compose.yml</code> 文件后，你可以使用以下命令启动应用：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker-compose up -d<br></code></pre></td></tr></table></figure>
+
+<p><code>-d</code> 参数表示在后台运行容器。</p>
+<h2 id="停止应用"><a href="#停止应用" class="headerlink" title="停止应用"></a>停止应用</h2><p>要停止应用，可以使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker-compose down<br></code></pre></td></tr></table></figure>
+
+<p>这将停止并删除所有容器、网络和卷。</p>
+<h2 id="查看日志"><a href="#查看日志" class="headerlink" title="查看日志"></a>查看日志</h2><p>你可以使用以下命令查看服务的日志：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker-compose logs -f web<br></code></pre></td></tr></table></figure>
+
+<p>这将实时显示 <code>web</code> 服务的日志。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Docker Compose 是一个强大的工具，可以帮助你轻松地定义和运行多容器 Docker 应用。通过一个简单的 <code>docker-compose.yml</code> 文件，你可以配置应用的所有服务、网络和卷，并使用简单的命令来管理整个应用的生命周期。希望这篇博客能帮助你更好地理解和使用 Docker Compose。</p>
+<p>这篇博客介绍了 Docker Compose 的基本概念、安装方法、如何编写 <code>docker-compose.yml</code> 文件以及如何使用 Docker Compose 启动、停止和查看应用日志。希望对你有所帮助！</p>
+
+      </section>
+      <section class="extra">
+        
+          <ul class="copyright">
+  
+    <li><strong>本文作者：</strong>Tingyu</li>
+    <li><strong>本文链接：</strong><a href="http://blog.4040940.xyz/2023/08/07/docker_compose/index.html" title="http:&#x2F;&#x2F;blog.4040940.xyz&#x2F;2023&#x2F;08&#x2F;07&#x2F;docker_compose&#x2F;index.html">http:&#x2F;&#x2F;blog.4040940.xyz&#x2F;2023&#x2F;08&#x2F;07&#x2F;docker_compose&#x2F;index.html</a></li>
+    <li><strong>版权声明：</strong>本博客所有文章均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" title="BY-NC-SA" target="_blank" rel="noopener">BY-NC-SA</a> 许可协议，转载请注明出处！</li>
+  
+</ul>
+        
+        
+          <section class="donate">
+  <div id="qrcode-donate">
+    <img   class="lazyload" data-original="/images/qrcode/alipay.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" >
+  </div>
+  <div class="icon">
+    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
+    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
+  </div>
+</section>
+        
+        
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/" rel="tag">docker</a></li></ul> 
+
+        
+  <nav class="nav">
+    <a href="/2023/09/25/translate-shell/"><i class="iconfont iconleft"></i>使用 translate-shell 实现命令行翻译</a>
+    <a href="/2023/08/07/docker_logs/">容器的日志管理<i class="iconfont iconright"></i></a>
+  </nav>
+
+      </section>
+      
+        <section class="comments">
+  
+    <div class="btn" id="comments-btn">查看评论</div>
+  
+  
+<div id="SOHUCS"></div>
+<script type="text/javascript">
+  window.onload = function () {
+    var loadChangYan = function () {
+      var appid = 'cywclrjGA';
+      var conf = '384bbffa8b7a0ee1a75c3b1583ebf924';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+        var head = document.getElementsByTagName('head')[0] || document.head || document.documentElement;
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.charset = 'utf-8';
+        script.id = 'changyan_mobile_js';
+        script.src = 'https://cy-cdn.kuaizhan.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid +
+          '&conf=' + conf;
+        head.appendChild(script);
+      } else {
+        var loadJs = function (d, a) {
+          var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+          var b = document.createElement("script");
+          b.setAttribute("type", "text/javascript");
+          b.setAttribute("charset", "UTF-8");
+          b.setAttribute("src", d);
+          if (typeof a === "function") {
+            if (window.attachEvent) {
+              b.onreadystatechange = function () {
+                var e = b.readyState;
+                if (e === "loaded" || e === "complete") {
+                  b.onreadystatechange = null;
+                  a()
+                }
+              }
+            } else {
+              b.onload = a
+            }
+          }
+          c.appendChild(b)
+        };
+        loadJs("https://cy-cdn.kuaizhan.com/upload/changyan.js", function () {
+          window.changyan.api.config({
+            appid: appid,
+            conf: conf
+          })
+        });
+      }
+    }
+    if ( true ) {
+      $("#comments-btn").on("click", function () {
+        $(this).hide();
+        loadChangYan();
+      });
+    } else {
+      loadChangYan();
+    }
+  }
+</script>
+
+</section>
+      
+    </section>
+  </div>
+</article></div>
+      <div class="col-xl-3">
+        
+          
+  <aside class="toc-wrap">
+    <h3 class="toc-title">文章目录：</h3>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-Docker-Compose-%E9%83%A8%E7%BD%B2%E5%BA%94%E7%94%A8"><span class="toc-text">使用 Docker Compose 部署应用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-Docker-Compose%EF%BC%9F"><span class="toc-text">什么是 Docker Compose？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-Docker-Compose"><span class="toc-text">安装 Docker Compose</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8-Linux-%E4%B8%8A%E5%AE%89%E8%A3%85-Docker-Compose"><span class="toc-text">在 Linux 上安装 Docker Compose</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8-Windows-%E5%92%8C-macOS-%E4%B8%8A%E5%AE%89%E8%A3%85-Docker-Compose"><span class="toc-text">在 Windows 和 macOS 上安装 Docker Compose</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E5%86%99-docker-compose-yml-%E6%96%87%E4%BB%B6"><span class="toc-text">编写 docker-compose.yml 文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E9%87%8A"><span class="toc-text">解释</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8%E5%BA%94%E7%94%A8"><span class="toc-text">启动应用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%81%9C%E6%AD%A2%E5%BA%94%E7%94%A8"><span class="toc-text">停止应用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%97%A5%E5%BF%97"><span class="toc-text">查看日志</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></li></ol>
+  </aside>
+
+        
+      </div>
+    </div>
+  </div>
+</main>
+  
+
+<footer class="footer">
+  <div class="footer-social"><a 
+        href="weixin://dl/business/?t=3lfnmOoORsu "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#09BB07'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconwechat-fill "></i>
+      </a><a 
+        href="https://github.com/TingyuShare "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#9f7be1'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  icongithub-fill "></i>
+      </a><a 
+        href="mailto:ting_yumail@163.com "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color=#FF3B00" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconmail"></i>
+      </a></div>
+  
+    <div class="footer-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+  
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  
+  
+  
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  
+  
+  
+    
+<script src="/js/color-mode.js"></script>
+
+  
+  
+</body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>
