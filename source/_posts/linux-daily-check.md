@@ -1,6 +1,6 @@
 ---
 title: linux 系统日常巡检脚本
-date: 2023-03-07 00:00:00
+date: 2023-03-07
 tags: linux
 ---
 # linux 系统日常巡检脚本

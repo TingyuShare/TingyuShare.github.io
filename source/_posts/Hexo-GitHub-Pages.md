@@ -1,6 +1,6 @@
 ---
 title: MarkDown 博客小试
-date: 2022-04-11 18:05:16
+date: 2022-04-11
 tags: hexo
 ---
 快速组织一下我设置 Hexo blog 用到的资源, 好了记录一个美好的开始吧！
