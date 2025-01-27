@@ -6,12 +6,12 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>BestTrace - VISION</title>
+  <title>容器技术简介 - VISION</title>
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="google" content="notranslate" />
   <meta name="keywords" content="blog fun idea">
-  <meta name="description" content="安装和使用 BestTrace 的指南BestTrac...">
+  <meta name="description" content="Docker容器介绍Docker容器是现代应用程序开发...">
   <meta name="author" content="Tingyu">
   <link rel="icon" href="/images/icon/favicon-16x16.png" type="image/png" sizes="16x16">
   <link rel="icon" href="/images/icon/favicon-32x32.png" type="image/png" sizes="32x32">
@@ -152,7 +152,7 @@
       
       
     </div>
-    <div class="center">BestTrace</div>
+    <div class="center">容器技术简介</div>
     <div class="right">
       <i class="iconfont iconmenu j-navbar-menu"></i>
     </div>
@@ -196,86 +196,82 @@
     <section class="head">
   <img   class="lazyload" data-original="https://www.dmoe.cc/random.php" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
   <div class="head-mask">
-    <h1 class="head-title">BestTrace</h1>
+    <h1 class="head-title">容器技术简介</h1>
     <div class="head-info">
-      <span class="post-info-item"><i class="iconfont iconcalendar"></i>六月 15, 2022</span>
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>八月 03, 2023</span>
       
-      <span class="post-info-item"><i class="iconfont iconfont-size"></i>1106</span>
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>1476</span>
     </div>
   </div>
 </section>
     <section class="main">
       <section class="content">
         
-        <h1 id="安装和使用-BestTrace-的指南"><a href="#安装和使用-BestTrace-的指南" class="headerlink" title="安装和使用 BestTrace 的指南"></a>安装和使用 BestTrace 的指南</h1><p>BestTrace 是一款网络路由跟踪工具，可以帮助用户分析数据包从源地址到目标地址的路径。它提供了图形化界面和命令行工具，适用于 Windows、macOS 和 Linux 系统。本文将介绍如何安装和使用 BestTrace。</p>
-<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ol>
-<li><a href="#%E5%AE%89%E8%A3%85-besttrace">安装 BestTrace</a><ul>
-<li><a href="#windows">Windows</a></li>
-<li><a href="#macos">macOS</a></li>
-<li><a href="#linux">Linux</a></li>
-</ul>
-</li>
-<li><a href="#%E4%BD%BF%E7%94%A8-besttrace">使用 BestTrace</a><ul>
-<li><a href="#%E5%9B%BE%E5%BD%A2%E5%8C%96%E7%95%8C%E9%9D%A2">图形化界面</a></li>
-<li><a href="#%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7">命令行工具</a></li>
-</ul>
-</li>
-<li><a href="#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98">常见问题</a></li>
-<li><a href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5">参考链接</a></li>
-</ol>
-<h2 id="安装-BestTrace"><a href="#安装-BestTrace" class="headerlink" title="安装 BestTrace"></a>安装 BestTrace</h2><h3 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h3><ol>
-<li>访问 <a target="_blank" rel="noopener" href="https://www.ipip.net/product/client.html">BestTrace 官方网站</a> 下载 Windows 版本的安装包。</li>
-<li>双击下载的安装包，按照提示完成安装。</li>
-<li>安装完成后，可以在开始菜单中找到 BestTrace 并启动。</li>
-</ol>
-<h3 id="macOS"><a href="#macOS" class="headerlink" title="macOS"></a>macOS</h3><ol>
-<li>访问 <a target="_blank" rel="noopener" href="https://www.ipip.net/product/client.html">BestTrace 官方网站</a> 下载 macOS 版本的安装包。</li>
-<li>打开下载的 <code>.dmg</code> 文件，将 BestTrace 拖拽到应用程序文件夹中。</li>
-<li>在应用程序文件夹中找到 BestTrace 并启动。</li>
-</ol>
-<h3 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h3><ol>
-<li><p>访问 <a target="_blank" rel="noopener" href="https://www.ipip.net/product/client.html">BestTrace 官方网站</a> 下载 Linux 版本的安装包。</p>
-</li>
-<li><p>解压下载的压缩包，进入解压后的目录。</p>
-</li>
-<li><p>运行以下命令启动 BestTrace：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">./besttrace<br></code></pre></td></tr></table></figure></li>
-</ol>
-<h2 id="使用-BestTrace"><a href="#使用-BestTrace" class="headerlink" title="使用 BestTrace"></a>使用 BestTrace</h2><h3 id="图形化界面"><a href="#图形化界面" class="headerlink" title="图形化界面"></a>图形化界面</h3><ol>
-<li>启动 BestTrace 后，你会看到一个简洁的图形化界面。</li>
-<li>在输入框中输入目标 IP 地址或域名，然后点击“Trace”按钮。</li>
-<li>BestTrace 会显示数据包从你的计算机到目标地址的路径，包括每个节点的 IP 地址、地理位置和延迟。</li>
-</ol>
-<h3 id="命令行工具"><a href="#命令行工具" class="headerlink" title="命令行工具"></a>命令行工具</h3><ol>
-<li><p>打开终端或命令提示符。</p>
-</li>
-<li><p>输入以下命令来跟踪路由：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">besttrace &lt;目标IP或域名&gt;<br></code></pre></td></tr></table></figure>
+        <h1 id="Docker容器介绍"><a href="#Docker容器介绍" class="headerlink" title="Docker容器介绍"></a>Docker容器介绍</h1><p>Docker容器是现代应用程序开发和部署的重要工具，它提供了一种轻量级、可移植的方式来打包和管理应用。本文将深入探讨Docker容器的基本操作，包括运行、停止、重启、暂停、删除容器，以及容器的状态机、资源限制和底层技术实现。</p>
+<h2 id="1-什么是Docker容器？"><a href="#1-什么是Docker容器？" class="headerlink" title="1. 什么是Docker容器？"></a>1. 什么是Docker容器？</h2><p>Docker容器是基于Docker镜像创建的一个独立的、可执行的运行环境。它包含了应用程序及其所有依赖项，确保应用在任何环境中都能一致运行。</p>
+<h2 id="2-运行容器"><a href="#2-运行容器" class="headerlink" title="2. 运行容器"></a>2. 运行容器</h2><p>要运行一个Docker容器，可以使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker run -d --name my_container my_image<br></code></pre></td></tr></table></figure>
 
-<p>例如：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">besttrace 8.8.8.8<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>BestTrace 会输出每个节点的信息，包括 IP 地址、地理位置和延迟。</p>
-</li>
-</ol>
-<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><h3 id="1-BestTrace-无法启动"><a href="#1-BestTrace-无法启动" class="headerlink" title="1. BestTrace 无法启动"></a>1. BestTrace 无法启动</h3><ul>
-<li><p><strong>Windows</strong>: 确保你已安装最新的 .NET Framework。</p>
-</li>
-<li><p><strong>macOS</strong>: 确保你已允许来自未知开发者的应用程序。</p>
-</li>
-<li><p><strong>Linux</strong>: 确保你已赋予执行权限：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">chmod</span> +x besttrace<br></code></pre></td></tr></table></figure></li>
+<ul>
+<li><code>-d</code>: 在后台运行容器。</li>
+<li><code>--name</code>: 指定容器的名称。</li>
+<li><code>my_image</code>: 使用的Docker镜像。</li>
 </ul>
-<h3 id="2-BestTrace-显示的结果不准确"><a href="#2-BestTrace-显示的结果不准确" class="headerlink" title="2. BestTrace 显示的结果不准确"></a>2. BestTrace 显示的结果不准确</h3><ul>
-<li>确保你的网络连接正常。</li>
-<li>尝试更换目标 IP 或域名，重新进行跟踪。</li>
+<h2 id="3-管理容器状态"><a href="#3-管理容器状态" class="headerlink" title="3. 管理容器状态"></a>3. 管理容器状态</h2><h3 id="3-1-停止容器"><a href="#3-1-停止容器" class="headerlink" title="3.1 停止容器"></a>3.1 停止容器</h3><p>要停止一个正在运行的容器，可以使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker stop my_container<br></code></pre></td></tr></table></figure>
+
+<h3 id="3-2-启动容器"><a href="#3-2-启动容器" class="headerlink" title="3.2 启动容器"></a>3.2 启动容器</h3><p>要启动一个已停止的容器，可以使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker start my_container<br></code></pre></td></tr></table></figure>
+
+<h3 id="3-3-重启容器"><a href="#3-3-重启容器" class="headerlink" title="3.3 重启容器"></a>3.3 重启容器</h3><p>要重启一个容器，可以使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker restart my_container<br></code></pre></td></tr></table></figure>
+
+<h3 id="3-4-暂停容器"><a href="#3-4-暂停容器" class="headerlink" title="3.4 暂停容器"></a>3.4 暂停容器</h3><p>暂停一个容器会挂起其所有进程：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker pause my_container<br></code></pre></td></tr></table></figure>
+
+<h3 id="3-5-恢复容器"><a href="#3-5-恢复容器" class="headerlink" title="3.5 恢复容器"></a>3.5 恢复容器</h3><p>要恢复一个已暂停的容器，可以使用：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker unpause my_container<br></code></pre></td></tr></table></figure>
+
+<h2 id="4-删除容器"><a href="#4-删除容器" class="headerlink" title="4. 删除容器"></a>4. 删除容器</h2><p>删除一个容器可以使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker <span class="hljs-built_in">rm</span> my_container<br></code></pre></td></tr></table></figure>
+
+<p>如果要强制删除一个正在运行的容器，可以使用 <code>-f</code> 选项：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker <span class="hljs-built_in">rm</span> -f my_container<br></code></pre></td></tr></table></figure>
+
+<h2 id="5-容器状态机"><a href="#5-容器状态机" class="headerlink" title="5. 容器状态机"></a>5. 容器状态机</h2><p>Docker容器的状态机通常包括以下几种状态：</p>
+<ul>
+<li><strong>创建</strong>：容器已创建，但未运行。</li>
+<li><strong>运行</strong>：容器正在运行。</li>
+<li><strong>暂停</strong>：容器已暂停。</li>
+<li><strong>停止</strong>：容器已停止。</li>
+<li><strong>删除</strong>：容器被删除，无法再使用。</li>
 </ul>
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://www.ipip.net/product/client.html">BestTrace 官方网站</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/ipipnet/besttrace">BestTrace GitHub 仓库</a></li>
+<p>这些状态之间的转换取决于用户的操作，例如运行、停止、暂停或删除容器。</p>
+<h2 id="6-资源限制"><a href="#6-资源限制" class="headerlink" title="6. 资源限制"></a>6. 资源限制</h2><p>Docker允许用户对容器进行资源限制，以确保其不会消耗过多的系统资源。可以通过以下选项设置资源限制：</p>
+<ul>
+<li><strong>CPU限制</strong>：</li>
 </ul>
-<hr>
-<p>通过本文，你应该已经掌握了如何安装和使用 BestTrace。无论是通过图形化界面还是命令行工具，BestTrace 都能帮助你轻松分析网络路由。如果你有任何问题或建议，欢迎在评论区留言。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker run --cpus=<span class="hljs-string">&quot;1.5&quot;</span> my_image<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>内存限制</strong>：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker run -m 512m my_image<br></code></pre></td></tr></table></figure>
+
+<h2 id="7-容器的底层技术"><a href="#7-容器的底层技术" class="headerlink" title="7. 容器的底层技术"></a>7. 容器的底层技术</h2><p>Docker容器的底层技术主要依赖于以下几个关键组件：</p>
+<ul>
+<li><p><strong>Linux内核功能</strong>：Docker利用Linux的cgroups和namespaces来实现资源隔离和管理。</p>
+<ul>
+<li><strong>cgroups</strong>：控制组，用于限制、记录和隔离进程的资源使用（CPU、内存、I&#x2F;O等）。</li>
+<li><strong>namespaces</strong>：命名空间，为容器提供独立的视图，如进程、网络和文件系统。</li>
+</ul>
+</li>
+<li><p><strong>Union File System</strong>：Docker使用Union File System（如OverlayFS）来创建分层文件系统，使得镜像和容器的存储更加高效。</p>
+</li>
+<li><p><strong>Docker引擎</strong>：Docker引擎是一个客户端-服务器应用程序，提供API与命令行工具，用于管理Docker容器。</p>
+</li>
+</ul>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>Docker容器通过提供轻量级、可移植的运行环境，极大地简化了应用程序的开发和部署过程。了解容器的基本操作、状态机、资源限制和底层技术，可以帮助开发者更好地利用Docker，提升工作效率。随着容器技术的不断发展，掌握这些知识将使你在现代开发环境中更加游刃有余。</p>
 
       </section>
       <section class="extra">
@@ -283,7 +279,7 @@
           <ul class="copyright">
   
     <li><strong>本文作者：</strong>Tingyu</li>
-    <li><strong>本文链接：</strong><a href="http://blog.4040940.xyz/2022/06/14/besttrace/index.html" title="http:&#x2F;&#x2F;blog.4040940.xyz&#x2F;2022&#x2F;06&#x2F;14&#x2F;besttrace&#x2F;index.html">http:&#x2F;&#x2F;blog.4040940.xyz&#x2F;2022&#x2F;06&#x2F;14&#x2F;besttrace&#x2F;index.html</a></li>
+    <li><strong>本文链接：</strong><a href="http://blog.4040940.xyz/2023/08/02/docker_containers/index.html" title="http:&#x2F;&#x2F;blog.4040940.xyz&#x2F;2023&#x2F;08&#x2F;02&#x2F;docker_containers&#x2F;index.html">http:&#x2F;&#x2F;blog.4040940.xyz&#x2F;2023&#x2F;08&#x2F;02&#x2F;docker_containers&#x2F;index.html</a></li>
     <li><strong>版权声明：</strong>本博客所有文章均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" title="BY-NC-SA" target="_blank" rel="noopener">BY-NC-SA</a> 许可协议，转载请注明出处！</li>
   
 </ul>
@@ -300,12 +296,12 @@
 </section>
         
         
-  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/network/" rel="tag">network</a></li></ul> 
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/" rel="tag">docker</a></li></ul> 
 
         
   <nav class="nav">
-    <a href="/2022/06/17/loadbalance/"><i class="iconfont iconleft"></i>负载均衡器常用的算法机制</a>
-    <a href="/2022/06/13/pi-hole/">Pi-hole<i class="iconfont iconright"></i></a>
+    <a href="/2023/08/03/docker_networks/"><i class="iconfont iconleft"></i>Docker网络介绍</a>
+    <a href="/2023/08/01/docker_images/">Docker 镜像的内部结构<i class="iconfont iconright"></i></a>
   </nav>
 
       </section>
@@ -382,7 +378,7 @@
           
   <aside class="toc-wrap">
     <h3 class="toc-title">文章目录：</h3>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8-BestTrace-%E7%9A%84%E6%8C%87%E5%8D%97"><span class="toc-text">安装和使用 BestTrace 的指南</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95"><span class="toc-text">目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-BestTrace"><span class="toc-text">安装 BestTrace</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Windows"><span class="toc-text">Windows</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#macOS"><span class="toc-text">macOS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux"><span class="toc-text">Linux</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-BestTrace"><span class="toc-text">使用 BestTrace</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE%E5%BD%A2%E5%8C%96%E7%95%8C%E9%9D%A2"><span class="toc-text">图形化界面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7"><span class="toc-text">命令行工具</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="toc-text">常见问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-BestTrace-%E6%97%A0%E6%B3%95%E5%90%AF%E5%8A%A8"><span class="toc-text">1. BestTrace 无法启动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-BestTrace-%E6%98%BE%E7%A4%BA%E7%9A%84%E7%BB%93%E6%9E%9C%E4%B8%8D%E5%87%86%E7%A1%AE"><span class="toc-text">2. BestTrace 显示的结果不准确</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="toc-text">参考链接</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Docker%E5%AE%B9%E5%99%A8%E4%BB%8B%E7%BB%8D"><span class="toc-text">Docker容器介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AFDocker%E5%AE%B9%E5%99%A8%EF%BC%9F"><span class="toc-text">1. 什么是Docker容器？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E8%BF%90%E8%A1%8C%E5%AE%B9%E5%99%A8"><span class="toc-text">2. 运行容器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E7%AE%A1%E7%90%86%E5%AE%B9%E5%99%A8%E7%8A%B6%E6%80%81"><span class="toc-text">3. 管理容器状态</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E5%81%9C%E6%AD%A2%E5%AE%B9%E5%99%A8"><span class="toc-text">3.1 停止容器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E5%90%AF%E5%8A%A8%E5%AE%B9%E5%99%A8"><span class="toc-text">3.2 启动容器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-%E9%87%8D%E5%90%AF%E5%AE%B9%E5%99%A8"><span class="toc-text">3.3 重启容器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-%E6%9A%82%E5%81%9C%E5%AE%B9%E5%99%A8"><span class="toc-text">3.4 暂停容器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-%E6%81%A2%E5%A4%8D%E5%AE%B9%E5%99%A8"><span class="toc-text">3.5 恢复容器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%88%A0%E9%99%A4%E5%AE%B9%E5%99%A8"><span class="toc-text">4. 删除容器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%AE%B9%E5%99%A8%E7%8A%B6%E6%80%81%E6%9C%BA"><span class="toc-text">5. 容器状态机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E8%B5%84%E6%BA%90%E9%99%90%E5%88%B6"><span class="toc-text">6. 资源限制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E5%AE%B9%E5%99%A8%E7%9A%84%E5%BA%95%E5%B1%82%E6%8A%80%E6%9C%AF"><span class="toc-text">7. 容器的底层技术</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E8%AE%BA"><span class="toc-text">结论</span></a></li></ol></li></ol>
   </aside>
 
         

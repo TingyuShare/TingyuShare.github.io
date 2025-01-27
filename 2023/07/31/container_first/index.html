@@ -6,12 +6,12 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>BestTrace - VISION</title>
+  <title>容器技术简介 - VISION</title>
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="google" content="notranslate" />
   <meta name="keywords" content="blog fun idea">
-  <meta name="description" content="安装和使用 BestTrace 的指南BestTrac...">
+  <meta name="description" content="容器技术简介容器技术是近年来云计算和软件开发领域的重要...">
   <meta name="author" content="Tingyu">
   <link rel="icon" href="/images/icon/favicon-16x16.png" type="image/png" sizes="16x16">
   <link rel="icon" href="/images/icon/favicon-32x32.png" type="image/png" sizes="32x32">
@@ -152,7 +152,7 @@
       
       
     </div>
-    <div class="center">BestTrace</div>
+    <div class="center">容器技术简介</div>
     <div class="right">
       <i class="iconfont iconmenu j-navbar-menu"></i>
     </div>
@@ -194,88 +194,80 @@
       <div class="col-xl-6"><article class="article">
   <div class="wrap">
     <section class="head">
-  <img   class="lazyload" data-original="https://www.dmoe.cc/random.php" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <img   class="lazyload" data-original="https://picsum.photos/1024/768" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
   <div class="head-mask">
-    <h1 class="head-title">BestTrace</h1>
+    <h1 class="head-title">容器技术简介</h1>
     <div class="head-info">
-      <span class="post-info-item"><i class="iconfont iconcalendar"></i>六月 15, 2022</span>
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>八月 01, 2023</span>
       
-      <span class="post-info-item"><i class="iconfont iconfont-size"></i>1106</span>
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>1520</span>
     </div>
   </div>
 </section>
     <section class="main">
       <section class="content">
         
-        <h1 id="安装和使用-BestTrace-的指南"><a href="#安装和使用-BestTrace-的指南" class="headerlink" title="安装和使用 BestTrace 的指南"></a>安装和使用 BestTrace 的指南</h1><p>BestTrace 是一款网络路由跟踪工具，可以帮助用户分析数据包从源地址到目标地址的路径。它提供了图形化界面和命令行工具，适用于 Windows、macOS 和 Linux 系统。本文将介绍如何安装和使用 BestTrace。</p>
+        <h1 id="容器技术简介"><a href="#容器技术简介" class="headerlink" title="容器技术简介"></a>容器技术简介</h1><p>容器技术是近年来云计算和软件开发领域的重要创新之一。它通过轻量级的虚拟化方式，实现了应用程序及其依赖的隔离和打包，极大地简化了开发、测试和部署的流程。本文将介绍什么是容器、为什么需要容器，以及容器是如何工作的。</p>
 <h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ol>
-<li><a href="#%E5%AE%89%E8%A3%85-besttrace">安装 BestTrace</a><ul>
-<li><a href="#windows">Windows</a></li>
-<li><a href="#macos">macOS</a></li>
-<li><a href="#linux">Linux</a></li>
+<li><a href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%AE%B9%E5%99%A8">什么是容器？</a></li>
+<li><a href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E5%AE%B9%E5%99%A8">为什么需要容器？</a><ul>
+<li><a href="#%E7%8E%AF%E5%A2%83%E4%B8%80%E8%87%B4%E6%80%A7">环境一致性</a></li>
+<li><a href="#%E8%B5%84%E6%BA%90%E5%88%A9%E7%94%A8%E7%8E%87">资源利用率</a></li>
+<li><a href="#%E5%BF%AB%E9%80%9F%E9%83%A8%E7%BD%B2%E4%B8%8E%E6%89%A9%E5%B1%95">快速部署与扩展</a></li>
 </ul>
 </li>
-<li><a href="#%E4%BD%BF%E7%94%A8-besttrace">使用 BestTrace</a><ul>
-<li><a href="#%E5%9B%BE%E5%BD%A2%E5%8C%96%E7%95%8C%E9%9D%A2">图形化界面</a></li>
-<li><a href="#%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7">命令行工具</a></li>
+<li><a href="#%E5%AE%B9%E5%99%A8%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84">容器是如何工作的？</a><ul>
+<li><a href="#%E5%AE%B9%E5%99%A8%E4%B8%8E%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9A%84%E5%8C%BA%E5%88%AB">容器与虚拟机的区别</a></li>
+<li><a href="#%E5%AE%B9%E5%99%A8%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF">容器核心技术</a></li>
 </ul>
 </li>
-<li><a href="#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98">常见问题</a></li>
-<li><a href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5">参考链接</a></li>
+<li><a href="#%E6%80%BB%E7%BB%93">总结</a></li>
 </ol>
-<h2 id="安装-BestTrace"><a href="#安装-BestTrace" class="headerlink" title="安装 BestTrace"></a>安装 BestTrace</h2><h3 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h3><ol>
-<li>访问 <a target="_blank" rel="noopener" href="https://www.ipip.net/product/client.html">BestTrace 官方网站</a> 下载 Windows 版本的安装包。</li>
-<li>双击下载的安装包，按照提示完成安装。</li>
-<li>安装完成后，可以在开始菜单中找到 BestTrace 并启动。</li>
-</ol>
-<h3 id="macOS"><a href="#macOS" class="headerlink" title="macOS"></a>macOS</h3><ol>
-<li>访问 <a target="_blank" rel="noopener" href="https://www.ipip.net/product/client.html">BestTrace 官方网站</a> 下载 macOS 版本的安装包。</li>
-<li>打开下载的 <code>.dmg</code> 文件，将 BestTrace 拖拽到应用程序文件夹中。</li>
-<li>在应用程序文件夹中找到 BestTrace 并启动。</li>
-</ol>
-<h3 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h3><ol>
-<li><p>访问 <a target="_blank" rel="noopener" href="https://www.ipip.net/product/client.html">BestTrace 官方网站</a> 下载 Linux 版本的安装包。</p>
-</li>
-<li><p>解压下载的压缩包，进入解压后的目录。</p>
-</li>
-<li><p>运行以下命令启动 BestTrace：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">./besttrace<br></code></pre></td></tr></table></figure></li>
-</ol>
-<h2 id="使用-BestTrace"><a href="#使用-BestTrace" class="headerlink" title="使用 BestTrace"></a>使用 BestTrace</h2><h3 id="图形化界面"><a href="#图形化界面" class="headerlink" title="图形化界面"></a>图形化界面</h3><ol>
-<li>启动 BestTrace 后，你会看到一个简洁的图形化界面。</li>
-<li>在输入框中输入目标 IP 地址或域名，然后点击“Trace”按钮。</li>
-<li>BestTrace 会显示数据包从你的计算机到目标地址的路径，包括每个节点的 IP 地址、地理位置和延迟。</li>
-</ol>
-<h3 id="命令行工具"><a href="#命令行工具" class="headerlink" title="命令行工具"></a>命令行工具</h3><ol>
-<li><p>打开终端或命令提示符。</p>
-</li>
-<li><p>输入以下命令来跟踪路由：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">besttrace &lt;目标IP或域名&gt;<br></code></pre></td></tr></table></figure>
-
-<p>例如：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">besttrace 8.8.8.8<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>BestTrace 会输出每个节点的信息，包括 IP 地址、地理位置和延迟。</p>
-</li>
-</ol>
-<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><h3 id="1-BestTrace-无法启动"><a href="#1-BestTrace-无法启动" class="headerlink" title="1. BestTrace 无法启动"></a>1. BestTrace 无法启动</h3><ul>
-<li><p><strong>Windows</strong>: 确保你已安装最新的 .NET Framework。</p>
-</li>
-<li><p><strong>macOS</strong>: 确保你已允许来自未知开发者的应用程序。</p>
-</li>
-<li><p><strong>Linux</strong>: 确保你已赋予执行权限：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">chmod</span> +x besttrace<br></code></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="2-BestTrace-显示的结果不准确"><a href="#2-BestTrace-显示的结果不准确" class="headerlink" title="2. BestTrace 显示的结果不准确"></a>2. BestTrace 显示的结果不准确</h3><ul>
-<li>确保你的网络连接正常。</li>
-<li>尝试更换目标 IP 或域名，重新进行跟踪。</li>
-</ul>
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://www.ipip.net/product/client.html">BestTrace 官方网站</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/ipipnet/besttrace">BestTrace GitHub 仓库</a></li>
+<hr>
+<h2 id="什么是容器？"><a href="#什么是容器？" class="headerlink" title="什么是容器？"></a>什么是容器？</h2><p>容器是一种轻量级的虚拟化技术，它允许将应用程序及其所有依赖（如库、配置文件等）打包到一个独立的单元中。这个单元可以在任何支持容器的环境中运行，而不受底层操作系统或硬件的影响。</p>
+<p>容器的核心特点包括：</p>
+<ul>
+<li><strong>隔离性</strong>：每个容器运行在独立的环境中，互不干扰。</li>
+<li><strong>轻量级</strong>：容器共享主机操作系统的内核，无需额外的操作系统开销。</li>
+<li><strong>可移植性</strong>：容器可以在不同的平台和环境中运行，确保一致性。</li>
 </ul>
 <hr>
-<p>通过本文，你应该已经掌握了如何安装和使用 BestTrace。无论是通过图形化界面还是命令行工具，BestTrace 都能帮助你轻松分析网络路由。如果你有任何问题或建议，欢迎在评论区留言。</p>
+<h2 id="为什么需要容器？"><a href="#为什么需要容器？" class="headerlink" title="为什么需要容器？"></a>为什么需要容器？</h2><h3 id="环境一致性"><a href="#环境一致性" class="headerlink" title="环境一致性"></a>环境一致性</h3><p>在传统的开发流程中，开发、测试和生产环境可能存在差异，导致“在我机器上能运行”的问题。容器通过将应用程序及其依赖打包在一起，确保了环境的一致性，避免了因环境差异导致的问题。</p>
+<h3 id="资源利用率"><a href="#资源利用率" class="headerlink" title="资源利用率"></a>资源利用率</h3><p>与传统的虚拟机相比，容器更加轻量级。它们共享主机操作系统的内核，无需为每个容器分配独立的操作系统资源。这使得容器可以在相同的硬件上运行更多的实例，提高了资源利用率。</p>
+<h3 id="快速部署与扩展"><a href="#快速部署与扩展" class="headerlink" title="快速部署与扩展"></a>快速部署与扩展</h3><p>容器可以快速启动和停止，通常只需几秒钟。这种快速部署的能力使得容器非常适合微服务架构和持续集成&#x2F;持续部署（CI&#x2F;CD）流程。此外，容器可以轻松地水平扩展，以应对流量高峰。</p>
+<hr>
+<h2 id="容器是如何工作的？"><a href="#容器是如何工作的？" class="headerlink" title="容器是如何工作的？"></a>容器是如何工作的？</h2><h3 id="容器与虚拟机的区别"><a href="#容器与虚拟机的区别" class="headerlink" title="容器与虚拟机的区别"></a>容器与虚拟机的区别</h3><p>容器和虚拟机（VM）都提供了隔离的运行环境，但它们的实现方式不同：</p>
+<ul>
+<li><strong>虚拟机</strong>：每个虚拟机包含完整的操作系统和应用程序，运行在虚拟化层（如 Hypervisor）之上。虚拟机之间的隔离是通过虚拟化硬件实现的。</li>
+<li><strong>容器</strong>：容器共享主机操作系统的内核，但通过命名空间（Namespaces）和控制组（Cgroups）实现隔离。容器只包含应用程序及其依赖，因此更加轻量级。</li>
+</ul>
+<h3 id="容器核心技术"><a href="#容器核心技术" class="headerlink" title="容器核心技术"></a>容器核心技术</h3><p>容器技术的核心依赖于以下 Linux 特性：</p>
+<ol>
+<li><p><strong>命名空间（Namespaces）</strong><br>命名空间提供了资源的隔离，使得每个容器拥有独立的进程、网络、文件系统等视图。常见的命名空间包括：</p>
+<ul>
+<li>PID 命名空间：隔离进程 ID。</li>
+<li>Network 命名空间：隔离网络接口。</li>
+<li>Mount 命名空间：隔离文件系统挂载点。</li>
+</ul>
+</li>
+<li><p><strong>控制组（Cgroups）</strong><br>控制组用于限制和监控容器的资源使用，如 CPU、内存、磁盘 I&#x2F;O 等。它确保容器不会占用过多的主机资源。</p>
+</li>
+<li><p><strong>联合文件系统（Union File System）</strong><br>联合文件系统（如 OverlayFS）允许将多个文件系统层叠加在一起，形成一个统一的视图。这使得容器可以共享基础镜像，同时保留自己的修改。</p>
+</li>
+<li><p><strong>容器运行时（Container Runtime）</strong><br>容器运行时（如 Docker 的 <code>containerd</code>、<code>runc</code>）负责管理容器的生命周期，包括创建、启动、停止和删除容器。</p>
+</li>
+</ol>
+<hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>容器技术通过轻量级的虚拟化方式，解决了环境一致性、资源利用率和快速部署等问题，成为现代云计算和微服务架构的重要基石。它的核心依赖于 Linux 的命名空间、控制组和联合文件系统等技术，实现了高效的资源隔离和管理。</p>
+<p>如果你正在开发或部署分布式应用，容器技术无疑是一个值得深入学习和使用的工具。通过掌握容器技术，你可以显著提高开发效率和系统可靠性。</p>
+<hr>
+<p><strong>参考链接：</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://docs.docker.com/">Docker 官方文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://kubernetes.io/docs/home/">Kubernetes 官方文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Linux_namespaces">Linux 命名空间</a></li>
+<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Cgroups">Linux 控制组</a></li>
+</ul>
 
       </section>
       <section class="extra">
@@ -283,7 +275,7 @@
           <ul class="copyright">
   
     <li><strong>本文作者：</strong>Tingyu</li>
-    <li><strong>本文链接：</strong><a href="http://blog.4040940.xyz/2022/06/14/besttrace/index.html" title="http:&#x2F;&#x2F;blog.4040940.xyz&#x2F;2022&#x2F;06&#x2F;14&#x2F;besttrace&#x2F;index.html">http:&#x2F;&#x2F;blog.4040940.xyz&#x2F;2022&#x2F;06&#x2F;14&#x2F;besttrace&#x2F;index.html</a></li>
+    <li><strong>本文链接：</strong><a href="http://blog.4040940.xyz/2023/07/31/container_first/index.html" title="http:&#x2F;&#x2F;blog.4040940.xyz&#x2F;2023&#x2F;07&#x2F;31&#x2F;container_first&#x2F;index.html">http:&#x2F;&#x2F;blog.4040940.xyz&#x2F;2023&#x2F;07&#x2F;31&#x2F;container_first&#x2F;index.html</a></li>
     <li><strong>版权声明：</strong>本博客所有文章均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" title="BY-NC-SA" target="_blank" rel="noopener">BY-NC-SA</a> 许可协议，转载请注明出处！</li>
   
 </ul>
@@ -300,12 +292,12 @@
 </section>
         
         
-  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/network/" rel="tag">network</a></li></ul> 
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/" rel="tag">docker</a></li></ul> 
 
         
   <nav class="nav">
-    <a href="/2022/06/17/loadbalance/"><i class="iconfont iconleft"></i>负载均衡器常用的算法机制</a>
-    <a href="/2022/06/13/pi-hole/">Pi-hole<i class="iconfont iconright"></i></a>
+    <a href="/2023/08/01/docker_images/"><i class="iconfont iconleft"></i>Docker 镜像的内部结构</a>
+    <a href="/2023/03/06/linux-daily-check/">linux 系统日常巡检脚本<i class="iconfont iconright"></i></a>
   </nav>
 
       </section>
@@ -382,7 +374,7 @@
           
   <aside class="toc-wrap">
     <h3 class="toc-title">文章目录：</h3>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8-BestTrace-%E7%9A%84%E6%8C%87%E5%8D%97"><span class="toc-text">安装和使用 BestTrace 的指南</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95"><span class="toc-text">目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-BestTrace"><span class="toc-text">安装 BestTrace</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Windows"><span class="toc-text">Windows</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#macOS"><span class="toc-text">macOS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux"><span class="toc-text">Linux</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-BestTrace"><span class="toc-text">使用 BestTrace</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE%E5%BD%A2%E5%8C%96%E7%95%8C%E9%9D%A2"><span class="toc-text">图形化界面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7"><span class="toc-text">命令行工具</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="toc-text">常见问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-BestTrace-%E6%97%A0%E6%B3%95%E5%90%AF%E5%8A%A8"><span class="toc-text">1. BestTrace 无法启动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-BestTrace-%E6%98%BE%E7%A4%BA%E7%9A%84%E7%BB%93%E6%9E%9C%E4%B8%8D%E5%87%86%E7%A1%AE"><span class="toc-text">2. BestTrace 显示的结果不准确</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="toc-text">参考链接</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF%E7%AE%80%E4%BB%8B"><span class="toc-text">容器技术简介</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95"><span class="toc-text">目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%AE%B9%E5%99%A8%EF%BC%9F"><span class="toc-text">什么是容器？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E5%AE%B9%E5%99%A8%EF%BC%9F"><span class="toc-text">为什么需要容器？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E4%B8%80%E8%87%B4%E6%80%A7"><span class="toc-text">环境一致性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B5%84%E6%BA%90%E5%88%A9%E7%94%A8%E7%8E%87"><span class="toc-text">资源利用率</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E9%83%A8%E7%BD%B2%E4%B8%8E%E6%89%A9%E5%B1%95"><span class="toc-text">快速部署与扩展</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%B9%E5%99%A8%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84%EF%BC%9F"><span class="toc-text">容器是如何工作的？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%B9%E5%99%A8%E4%B8%8E%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">容器与虚拟机的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%B9%E5%99%A8%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF"><span class="toc-text">容器核心技术</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></li></ol>
   </aside>
 
         
